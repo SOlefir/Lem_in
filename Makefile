@@ -5,28 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: solefir <solefir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/22 17:51:25 by solefir           #+#    #+#              #
-#    Updated: 2019/07/08 16:18:46 by solefir          ###   ########.fr        #
+#    Created: 2018/12/11 21:25:16 by dquitzon          #+#    #+#              #
+#    Updated: 2019/07/15 19:39:33 by solefir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 
-CC = gcc -Wall -Wextra -Werror -I ./lem-in.h -I ./libft/libft.h
+DIR = ./src/
+HEADER = includes/lem_in.h includes/structures.h
+LIB = libft.a
 
-SRC = ./libft/ft_bzero.c ./libft/ft_strlen.c ./libft/ft_strncpy.c\
-	./libft/ft_memalloc.c ./libft/ft_strsub.c ./libft/ft_strdup.c\
-	./libft/ft_strjoin.c ./libft/ft_strchr.c ./libft/ft_itoa.c\
-	./libft/ft_putnbr.c ./libft/ft_putchar.c ./libft/ft_masmemdel.c\
-	./libft/ft_strdel.c ./get_next_line.c\
-	./main.c
+SOURCES = $(DIR)main.c $(DIR)validation.c $(DIR)errors.c
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SOURCES:%.c=%.o)
+
+FLAGS = -Wall -Wextra -Werror -c
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $^ -o $@
+	gcc $(FLAGS) -c $(SOURCES) -I $(HEADER)
+	gcc $(OBJ) $(LIB) -o $@
 
 clean:
 	rm -f $(OBJ)
