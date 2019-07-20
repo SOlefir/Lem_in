@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:47:11 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/15 18:35:18 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/20 16:37:09 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ typedef struct	s_ways	t_ways;
 
 struct	s_data
 {
-	int		lemins_coun;
-	int		rooms_count;
-	char*	room_name;
-	char*	links;
+	char	*farm;
+	t_data*	next;
 };
 
 struct	s_room

@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validation_help.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/15 12:40:04 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/20 20:10:00 by solefir          ###   ########.fr       */
+/*   Created: 2019/07/20 19:14:24 by solefir           #+#    #+#             */
+/*   Updated: 2019/07/20 21:06:05 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int		main(void)
+_Bool       is_room(char *str)
 {
-	int		error_nbr;
-	t_list	*input;
-	t_data	*farm;
-	t_room	*rooms;
-	t_ways	*all_ways;
-
-	error_nbr = read_and_valid(input);
-	if (error_nbr >= 0)
-		return (errors(error_nbr));
-	get_data(farm, input->farm);
-
-	return (1);
+    while (!ft_iswhitespace((int)buf[--i]));
+		is_room = (ft_isdigit((int)buf[i + 1]) && buf[i] == ' ') ? 1 : 0;
+		
 }
+_Bool       uniq_coordinates(char *str, t_list *input);
+_Bool       is_link(char *str);
+_Bool       is_comand(char *str);
+_Bool       is_comment(char *str);
