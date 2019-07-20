@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 17:21:52 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/20 21:32:20 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/20 21:43:47 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,26 @@ static	void	save_data(t_list *input, char **buf, int size_buf)
 static _Bool	valid_links(char *buf)
 {
 	int	i;
+	int	room;
 
 	i = 0;
-	while (buf[++i] != '\0')
+	room = 0;
+	while (buf[i] != '\0')
 	{
-		while (buf[i] != '-' && buf[i] != '\0')
+		if (buf[i] == 'L')
+			return (0);
+		while (buf[i] != '-' || buf[i] != '\0')
 		{
-			if (buf[i] == '#' || ft_iswhitespace(buf[i]) || buf[0] == 'L' ||
-				 buf[i] == '\0' ||  buf[i] == '\n')
+			if (buf[i] == '#' || ft_iswhitespace(buf[i]) ||
+				 buf[i] == '\0' ||  buf[i] == '\n' || room == 2)
 				return(0);
 			i++;
 		}
+		i++;
+		room++;
 	}
+	g_count_links++;
+	return (1);
 }
 
 static _Bool	valid_rooms(char *buf)
@@ -47,16 +55,16 @@ static _Bool	valid_rooms(char *buf)
 		return (0);
 	while (buf[++i] != '\0')
 	{
-		while (!ft_iswhitespace(buf[i]) && buf[i] != '\0')
+		while (!ft_iswhitespace(buf[i]) || buf[i] != '\0')
 		{
-			if (!coordinates && (!ft_isalpha((int)buf[i]) ||
-				!ft_isdigit((int)buf[i]) || buf[i] == '#'))
+			if (!coordinates && (!ft_isascii((int)buf[i]) || buf[i] == '#' ||
+				buf[i] == '\n'))
 				return (0);
 			if (coordinates && !ft_isdigit((int)buf[i]))
 				return (0);
 			i++;
 		}
-		if (!ft_iswhitespace(buf[i])) ||
+		if (!ft_iswhitespace(buf[i]) ||
 			(coordinates = ft_isdigit(buf[i + 1])) <= 0)
 			return (0);
 	}
