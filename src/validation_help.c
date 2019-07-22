@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_help.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
+/*   By: solefir <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:14:24 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/21 20:20:19 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/22 16:48:33 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,23 @@ _Bool	is_room(char *str)
 	int	i;
 	int	coordinates;
 
-	i = -1;
+	i = 0;
 	coordinates = 0;
-	while (str[++i] != '\0')
+	if(str[0] == '#')
+		return (0);
+	while (str[i] != '\0')
 	{
-		while (!ft_iswhitespace((int)str[i]))
+		while (!ft_iswhitespace((int)str[i]) && str[i] != '\0')
 			i++;
-		coordinates++;
-		if (coordinates > 2)
+		if (ft_isdigit(str[++i]))
+			coordinates++;
+		else
 			return (0);
+		while (!ft_iswhitespace((int)str[i]) && str[i] != '\0')
+			i++;
 	}
+	if (coordinates != 2)
+			return (0);
 	return (1);
 }
 
@@ -50,21 +57,20 @@ _Bool	is_link(char *str)
 		}
 		link++;
 	}
+	return (1);
 }
 
 _Bool	is_comand(char *str)
 {
 	int		i;
-	char	*start;
-	char	*end;
 
 	i = -1;
-	if (ft_strcmp("##start", str))
+	if (ft_strcmp("##start", str) >= 0)
 	{
 		g_start++;
 		return (1);
 	}
-	else if (ft_strcmp("##end", str))
+	else if (ft_strcmp("##end", str) >= 0)
 	{
 		g_start++;
 		return (1);
@@ -79,11 +85,13 @@ _Bool	is_comment(char **str)
 
 	i = -1;
 	hash = 0;
-	while (str[++i] != '\0')
+	if ((*str)[0] != '#')
+		return (0);
+	while ((*str)[++i] != '\0')
 	{
-		if (str[i] == '#')
+		if ((*str)[i] == '#')
 			hash++;
-		if (hash > 1)
+		if (hash != 1)
 			return (0);
 	}
 	ft_strdel(str);

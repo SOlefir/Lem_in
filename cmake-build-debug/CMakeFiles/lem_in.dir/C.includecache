@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/solefir/lem_in/includes/lem_in.h
+libft.h
+/Users/solefir/lem_in/includes/libft.h
+structures.h
+/Users/solefir/lem_in/includes/structures.h
+fcntl.h
+-
+stdio.h
+-
+
+/Users/solefir/lem_in/includes/libft.h
+unistd.h
+-
+string.h
+-
+stdlib.h
+-
+
+/Users/solefir/lem_in/includes/structures.h
+
+/Users/solefir/lem_in/src/validation.c
+../includes/lem_in.h
+/Users/solefir/lem_in/includes/lem_in.h
+
