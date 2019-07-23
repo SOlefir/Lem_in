@@ -1,8 +1,8 @@
 *.o
 *~
 *CMake*
+.DS_store
 dir_to_ignore/
 /.vscode
-/.DS_store
 /.idea
 /cmake-build-debug
