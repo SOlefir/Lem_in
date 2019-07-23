@@ -2,7 +2,7 @@
 *~
 *CMake*
 dir_to_ignore/
-#/.vscode
-#/.DS_store
-#/.idea
-#/cmake-build-debug
+/.vscode
+/.DS_store
+/.idea
+/cmake-build-debug
