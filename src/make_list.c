@@ -29,7 +29,7 @@ t_list		*make_list(char *str, int str_size)
 			list->content_size = 0;
 		else
 		{
-			ft_memcpy(list->content, (const void *)str, str_size);
+			ft_strcpy(list->content, str);
 			list->content_size = str_size;
 		}
 	}

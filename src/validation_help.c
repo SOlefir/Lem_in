@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_help.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solefir <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:14:24 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/22 16:48:33 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/24 19:45:02 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ _Bool	is_room(char *str)
 	{
 		while (!ft_iswhitespace((int)str[i]) && str[i] != '\0')
 			i++;
-		if (ft_isdigit(str[++i]))
+		if (str[i] != '\0' && ft_isdigit(str[++i]))
 			coordinates++;
 		else
 			return (0);
@@ -48,7 +48,7 @@ _Bool	is_link(char *str)
 	link = 0;
 	while (str[++i] != '\0')
 	{
-		while (str[i] != '-')
+		while (str[i] != '-' && str[i] != '\0')
 		{
 			if (ft_iswhitespace(str[i]))
 				return (0);
