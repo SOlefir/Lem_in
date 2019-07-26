@@ -6,7 +6,7 @@
 #    By: solefir <solefir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 21:25:16 by dquitzon          #+#    #+#              #
-#    Updated: 2019/07/24 19:12:52 by solefir          ###   ########.fr        #
+#    Updated: 2019/07/26 17:05:57 by solefir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ DIR = ./src/
 HEADER = includes/lem_in.h includes/structures.h includes/libft.h
 LIB = libft.a
 
-SOURCES = $(DIR)main.c $(DIR)validation.c $(DIR)errors.c $(DIR)test.c\
-		$(DIR)atoi_coordinates.c $(DIR)validation_help.c $(DIR)make_list.c
+SOURCES = $(DIR)main.c $(DIR)validation.c $(DIR)validation_help.c $(DIR)errors.c\
+		$(DIR)atoi_coordinates.c  $(DIR)get_data.c\
+		$(DIR)test.c\
 
 OBJ = $(SOURCES:%.c=%.o)
 

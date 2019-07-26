@@ -6,13 +6,18 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 17:21:52 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/24 19:47:15 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/26 16:51:00 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static _Bool	uniq_coordinates(char *buf, t_list *input)
+int		g_start = 0;
+int		g_end = 0;
+
+int		g_error_nbr = -1;
+
+static _Bool	uniq_rm_crd(char *str, t_list *input)
 {
 	int	i;
 
@@ -23,19 +28,13 @@ static _Bool	uniq_coordinates(char *buf, t_list *input)
 	{
 		if (input->content != NULL && is_room((char*)input->content))
 		{
-			while (!ft_iswhitespace(buf[i]) && buf[i] != '\0')
+			while (!ft_iswhitespace(str[i]) && str[i] != '\0')
 				i++;
-			if (ft_strncmp(buf, (char*)input->content, i) == 0)
-			{	
-				ft_strdel(&buf);
+			if (ft_strncmp(str, (char*)input->content, i) == 0)
 				return(0);
-			}
 			if ((atoi_coordinates((char*)input->content) ==
-				atoi_coordinates(buf)))
-			{
-				ft_strdel(&buf);
+				atoi_coordinates(str)))
 				return (0);
-			}
 		}
 		input = input->next;
 	}
@@ -55,10 +54,7 @@ static _Bool	valid_links(char *buf)
 		{
 			if (buf[0] == 'L' || buf[i] == '#' || buf[i] == '\n' ||
 				room == 2)
-			{
-				ft_strdel(&buf);
 				return (0);
-			}
 			i++;
 		}
 		i++;
@@ -80,23 +76,14 @@ static _Bool	valid_rooms(char *buf)
 		while (!ft_iswhitespace(buf[i]) && buf[i] != '\0')
 		{
 			if (buf[0] == 'L' || buf[i] == '#' || buf[i] == '\n')
-			{
-				ft_strdel(&buf);
 				return (0);
-			}
 			if (coordinates && !ft_isdigit((int)buf[i]))
-			{
-				ft_strdel(&buf);
 				return (0);
-			}
 			i++;
 		}
 		if (buf[i] != '\0' && (!ft_iswhitespace(buf[i]) ||
 			(coordinates += ft_isdigit(buf[i + 1])) <= 0))
-		{
-			ft_strdel(&buf);
 			return (0);
-		}
 		i += buf[i] == '\0'? 0 : 1;
 	}
 	g_count_room++;
@@ -110,46 +97,50 @@ static _Bool	valid_ants(char *buf)
 	i = -1;
 	while (buf[++i] != '\0')
 		if (!ft_isdigit((int)buf[i]))
-		{
-			ft_strdel(&buf);
 			return (0);
-		}
 	g_count_ants = ft_atoi(buf);
 	return (1);
 }
 
-int				read_and_valid(t_list *input)
+static	void	write_in_list(t_list **head, t_list *new)
+{
+	t_list	**temp;
+
+	temp = head;
+	if (head == NULL)
+		temp = new;
+	else
+		ft_lstadd(&new, (*temp)->next);
+	ft_memdel(new);
+	head = temp;
+}
+
+t_list			*validation_and_write_in_lst(void)
 {
 	char	*buf;
-	int		size_buf;
 	t_list	*head;
 
 	buf = NULL;
-	head = input;
-	while (get_next_line(fd, &buf) > 0 && (size_buf = (int)ft_strlen(buf)) > 0)
+	head = NULL;
+	while (get_next_line(fd, &buf) > 0 && g_error_nbr >= 0)
 	{
-		//printf("buf %s\n", buf);
-		if (buf[0] == '\n' || buf[0] == '\0')
-			return (0);
-		if (is_comment(&buf))
+		if (buf == NULL || buf[0] == '\n' || buf[0] == '\0')
+			g_error_nbr = 0;
+		if (is_comment(buf))
 			continue;
 		if (is_comand(buf) && (g_start > 1 && g_end > 1))
-			return (1);
+			g_error_nbr = 1;
 		else if (g_count_ants == 0 && !valid_ants(buf))
-			return (2);
-		else if (is_room(buf) && (!valid_rooms(buf) ||
-				    !uniq_coordinates(buf, head)))
-			return (3);
+			g_error_nbr = 2;
+		else if (is_room(buf) && (!valid_rooms(buf) || !uniq_rm_crd(buf, head)))
+			g_error_nbr = 3;
 		else if (is_link(buf) && !valid_links(buf))
-			return (4);
-        input->next = ft_lstnew(buf, size_buf + 1);
-		input = input->next;
-        printf("{%d %d}\n", (int)ft_strlen(buf), size_buf);
-        printf("buf %s\n", buf);
-        printf("con %s\n", (char*)input->content);
+			g_error_nbr = 4;
+		write_in_list(&head, ft_lstnew(buf, ft_strlen(buf) + 1));
 		ft_strdel(&buf);
 	}
-
+	if (g_error_nbr >= 0)
+		ft_memdel(&head);
 	ft_strdel(&buf);
-	return (-1);
+	return (head);
 }

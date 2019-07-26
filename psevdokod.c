@@ -22,7 +22,7 @@ typedef struct	s_room
 {
 	char*	name;
 	int		index;
-	int		way; //кол-во шагов к финишу из этой к. но это нужно будет вынести в структуру с линками наверн. 
+	int		steps; //кол-во шагов к финишу из этой к. но это нужно будет вынести в структуру с линками наверн. 
 	t_room	**next; //массив поинтеров на комнаты с которыми связана данная комната
 }				t_room;
 
@@ -78,17 +78,18 @@ while (y < data->rooms_count)
 
 int		main(void)
 {
-	int		error_nbr;
-	t_data	*farm;
-	t_room	*rooms;
-	t_ways	*all_ways;
-
-	error_nbr = 0;
-	get_data(farm);
-	if (error_nbr = validation(farm))
-		return (errors(error_nbr));
-	rooms = make_list_rooms(farm);
-	make_global_arr_links(rooms, farm);
-	all_ways = make_list_all_ways(farm);
-	let_go_lemins(farm, all_ways);
+	if (errors_n = validations_and_read)
+		return(error);
+	if (errors_n = get_data)
+		return (error);
+	if (start->next >= 1 && end->next >= 1)
+		ways = start->next < end->next ? start->next : end->next;
+	while (ways)
+	{
+		dejkstra;
+		edit_graph;
+		bhandari;
+		ways--;
+	}
+	go_to_finish;
 	return (1);

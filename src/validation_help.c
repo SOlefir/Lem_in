@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:14:24 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/24 19:45:02 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/26 16:13:03 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,22 +78,22 @@ _Bool	is_comand(char *str)
 	return (0);
 }
 
-_Bool	is_comment(char **str)
+_Bool	is_comment(char *str)
 {
 	int	i;
 	int	hash;
 
 	i = -1;
 	hash = 0;
-	if ((*str)[0] != '#')
+	if (str[0] != '#')
 		return (0);
-	while ((*str)[++i] != '\0')
+	while (str[++i] != '\0')
 	{
-		if ((*str)[i] == '#')
+		if (str[i] == '#')
 			hash++;
 		if (hash != 1)
 			return (0);
 	}
-	ft_strdel(str);
 	return (1);
 }
+

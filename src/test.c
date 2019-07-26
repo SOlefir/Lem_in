@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 20:44:09 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/24 19:29:17 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/26 16:51:24 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	test(t_list *input)
     temp = input->next;
 	if (temp == NULL)
 		printf("input == NULL\n");
-    temp = temp->next;
 	while (temp->next != NULL)
 	{
 		printf("%s\n", (char*)temp->content);
