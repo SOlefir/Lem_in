@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:40:04 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/27 18:35:04 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/28 23:00:42 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,23 @@ int		fd = 0;//
 
 int		main(void)
 {
-	//int			i;
 	t_list		*input;
-	/*t_graph		*graph;
-	t_graph		**ways;
-	t_struct_d	*data;*/
+	t_graph		**graph;
+	t_data		*data;
+	int			**ways; //сделать листами
 	
 	//i = 0;
 	fd = open("../farm.txt", O_RDONLY);//
 	printf("FD: %d\n", fd);//
 	input = validation_and_write_in_lst();
 	test(input);
-	/*data = g_error_nbr < 0 ? get_data(input) : NULL;*/
+	last_validation(input);
+	graph = make_graph(input);//создать массив ссылок на структуру с комнатами
 	if (g_error_nbr >= 0)
 		return (errors());
-	/*graph = make_graph(data);
-	g_count_ways = (g_start_links <= g_end_links) ?
-				g_start_links : g_end_links;
-	ways = (t_graph**)malloc(sizeof(t_graph) * g_count_ways);
-	while (i < g_count_ways && ways[i] != NULL)
-	{
-		ways[i] = dijkstra(graph);
-		bhandari(graph, ways);
-		i++;
-	}
+	ways = dijkstra(&graph);
+	bhandari(&ways);
 	let_ants_go(ways);
-	//test(input);*/
 	return (1);
 }
 /*

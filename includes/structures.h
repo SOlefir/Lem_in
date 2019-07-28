@@ -6,18 +6,18 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:47:11 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/26 17:14:32 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/28 21:11:04 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct	s_struct_d	t_struct_d;
+typedef struct	s_data		t_data;
 typedef struct	s_graph		t_graph;
-typedef struct	s_dijkstra	t_dijkstra;
+typedef struct	s_way		t_way;
 
-struct			s_struct_d
+struct			s_data
 {
 	char		**rooms;
 	int			**links;
@@ -25,14 +25,14 @@ struct			s_struct_d
 
 struct			s_graph
 {
-	int			room_index;
+	char		*name;
+	int			index;
 	int			count_steps; // поумолчанию g_count_links. дейкстра меняет это число
-	t_graph		**links;
+	int			*links;//индекс комнаты с которой линк
 };
 
-struct			s_dijkstra
+struct			t_way
 {
-	int			**got_rooms;
 	
 };
 
