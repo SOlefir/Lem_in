@@ -1,15 +1,24 @@
-145
-#Here is the number of lines required: 32
+5
 ##start
-Z__5 3 3
+r_start 23 3
+r_1 16 7
+r_2 16 3
+r_5 16 5
 ##end
-Fqu0 8 8
-Wgx6 12 12
-Wha4 15 15
-Zbo4 18 18
-B_f3 19 19
-Rtw7-Gfd9
-Blw1-Rqd8
-Rqd8-Zaj5
-Yfg1-Mdp1
-#Here is the number of lines required: 32
+r_6 9 3
+r_7 1 5
+r_8 4 8
+##end
+r_end 9 5
+r_end-r_6
+r_end-r_7
+r_start-r_2
+r_5-r_2
+r_6-r_1
+r_2-r_6
+r_5-r_1
+r_1-r_start
+r_8-r_7
+r_8-r_1
+r_8-r_5
+r_7-r_6

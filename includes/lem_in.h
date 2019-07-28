@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:42:21 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/26 17:08:52 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/27 20:21:40 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,25 @@
 **		GLOBAL VARIABLES:
 */
 
-extern int		g_count_ants;
-extern int		g_count_room;
-extern int		g_count_links;
-extern int		g_count_ways;
+enum    e_bool
+{
+	false,
+	true
+}       t_bool;
 
-extern int		g_start;
-extern int		g_end;
+int		g_count_ants;
+int		g_count_room;
+int		g_count_links;
+int		g_count_ways;
 
-extern int		g_start_links;
-extern int		g_end_links;
+int		g_start;
+int		g_end;
 
-extern int		g_error_nbr;
-extern int		fd;//
+int		g_start_links;
+int		g_end_links;
+
+int		g_error_nbr;
+int		fd;//
 
 /*
 **		FUNCTIONS:
@@ -46,14 +52,15 @@ extern int		fd;//
 void		test(t_list *input);
 
 t_list		*validation_and_write_in_lst(void);
-t_data		*get_data(t_list *input);
-int			errors(int error_nbr);
+t_struct_d	*get_data(t_list *input);
+int			errors(void);
 int			atoi_coordinates(char *str);
 
 _Bool       is_room(char *str);
 _Bool       is_link(char *str);
 _Bool       is_comand(char *str);
 _Bool       is_comment(char *str);
+_Bool		is_unknown(char *str);
 
 void		dijkstra();
 void		bhandari();

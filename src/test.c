@@ -17,12 +17,15 @@ void	test(t_list *input)
 {
     t_list  *temp;
 
-    temp = input->next;
+    temp = input;
 	if (temp == NULL)
 		printf("input == NULL\n");
-	while (temp->next != NULL)
+	else
 	{
-		printf("%s\n", (char*)temp->content);
-		//input = input->next;
+		while (temp->next != NULL)
+		{
+			printf("%s\n", (char *) temp->content);
+			temp = temp->next;
+		}
 	}
 }
