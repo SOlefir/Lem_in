@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:42:21 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/28 20:59:29 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/29 21:14:13 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ _Bool       is_comand(char *str);
 _Bool       is_comment(char *str);
 _Bool		is_unknown(char *str);
 
-void		dijkstra();
-void		bhandari();
+t_ways		**disjoint_path_finding(t_graph ***graph);
+t_ways		*dijkstra(t_graph ***graph);
 
 #endif
