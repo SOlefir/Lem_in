@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:47:11 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/29 21:15:24 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/30 21:34:33 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define STRUCTURES_H
 
 typedef struct	s_data		t_data;
-typedef struct	s_graph		t_graph;
+typedef struct	s_room		t_room;
 typedef struct	s_ways		t_ways;
 
 struct			s_data
@@ -23,7 +23,7 @@ struct			s_data
 	int			**links;
 };
 
-struct			s_graph
+struct			s_room
 {
 	char		*name;
 	int			index;
@@ -31,10 +31,12 @@ struct			s_graph
 	int			*links;//индекс комнаты с которой линк
 };
 
-struct			t_ways
+struct			s_ways
 {
 	int		*way;
+	int		len_way;
 	int		effectivity;
 	t_ways	*next;
 };
+
 #endif

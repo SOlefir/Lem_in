@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 22:08:50 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/29 21:15:12 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/30 18:25:26 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void			count_steps_to_end(t_graph ***graph, int s)//проверить э
 	j = 0;
 	i = 0;
 	step = s;
-	temp = grantpt;
+	temp = graph;
 	room = temp[g_start_room];
 	while (room->count_steps > step)
 	{
@@ -59,14 +59,13 @@ static int			*find_short_way(t_graph **graph)
 		way[++i] = room->index;
 		back = room;
 		room = room->links[j];
-		if (back->count_steps <= room->count_steps)	
+		if (back->count_steps <= room->count_steps)
 			room = back->links[j];
 	}
 	return (revers(&way));
-	
 }
 
-t_ways				**dijkstra(t_graph ***graph)
+t_ways				*dijkstra(t_graph ***graph)
 {
 	t_ways	**ways;
 	t_ways	*temp;

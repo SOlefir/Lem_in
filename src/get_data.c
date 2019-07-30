@@ -6,22 +6,12 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 16:54:06 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/28 15:10:18 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/30 21:32:42 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int				find_room_index(char *room, char** all_rooms)
-{
-	int	y;
-
-	y = -1;
-	while (++y < g_count_room)
-		if (ft_strcmp(room, all_rooms[y]) == 0)
-			return (y);
-	return (0);
-}
 
 static int		count_links_room(t_list *input, char *str)
 {

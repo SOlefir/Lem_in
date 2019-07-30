@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:42:21 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/29 21:14:13 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/30 22:20:50 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@
 */
 
 int		g_count_ants;
+
 int		g_count_room;
 int		g_count_links;
+
 int		g_count_ways;
 
 int		g_start;
@@ -48,7 +50,7 @@ int		fd;//
 void		test(t_list *input);
 
 t_list		*validation_and_write_in_lst(void);
-t_graph		**make_graph(t_list *input);
+t_room		**make_graph(t_list *input);
 
 int			errors(void);
 int			atoi_coordinates(char *str);
@@ -59,7 +61,7 @@ _Bool       is_comand(char *str);
 _Bool       is_comment(char *str);
 _Bool		is_unknown(char *str);
 
-t_ways		**disjoint_path_finding(t_graph ***graph);
-t_ways		*dijkstra(t_graph ***graph);
+t_ways		*disjoint_path_finding(t_room ***graph);
+t_ways		*dijkstra(t_room ***graph);
 
 #endif
