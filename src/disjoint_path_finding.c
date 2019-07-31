@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 20:49:43 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/30 18:39:57 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/31 20:44:05 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ static void		bhandari_disijoint(t_ways **a, t_ways **b, int f)
 	temp = divorce((*a)->way, start_a, end_b);
 	ft_masmemdel((void***)&(*a)->way, (size_t)(*a)->len_way);
 	(*a)->way = temp;
-	
+	(*a)->len_way = count_len_way((*a)->way);
 }
 
-t_ways			*disjoint_path_finding(t_graph ***graph)
+t_ways			*disjoint_path_finding(t_room ***graph)
 {
 	t_ways	*ways;
 	t_ways	*temp;

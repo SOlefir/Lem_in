@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:47:11 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/30 21:34:33 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/31 17:58:47 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ struct			s_ways
 {
 	int		*way;
 	int		len_way;
-	int		effectivity;
 	t_ways	*next;
 };
 

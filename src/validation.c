@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 17:21:52 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/27 19:59:46 by solefir          ###   ########.fr       */
+/*   Updated: 2019/07/31 17:32:20 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,6 @@ t_list			*validation_and_write_in_lst(void)
 	{
 		if (buf == NULL || buf[0] == '\n' || buf[0] == '\0')
 			g_error_nbr = 0;
-		if (is_comment(buf))
-			continue;
 		if (is_comand(buf) && (g_start > 1 && g_end > 1))
 			g_error_nbr = g_error_nbr > -1 ? g_error_nbr : 1;
 		else if (is_room(buf) && (!valid_rooms(buf) || !uniq_rm_crd(buf, head)))
