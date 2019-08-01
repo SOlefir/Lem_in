@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 16:52:07 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 18:25:10 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/01 21:39:07 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,12 @@ static t_room		*make_room(char *room_name, int y)
 t_room			**make_graph(t_list *input)
 {
 	t_room	**arr;
-	t_list	*temp;
 	int		j;
 	int		y;
 
 	y = 0;
 	arr = (t_room**)ft_memalloc(sizeof(t_room*) * g_count_room + 1);
-	while (input != NULL)
+	while (input != NULL || ++y < (g_count_room - 1))
 	{
 		if (is_comand((char *)input->content))
 		{
@@ -64,7 +63,7 @@ t_room			**make_graph(t_list *input)
 		else if (is_comment((char *)input->content))
 			continue;
 		else if (is_room((char *)input->content))
-			arr[++y] = make_room(input->content, y);
+			arr[y] = make_room(input->content, y);
 		else if (is_link((char *)input->content))
 			break;
 		input = input->next;

@@ -122,8 +122,8 @@ t_list			*validation_and_write_in_lst(void)
 		write_in_list(&head, ft_lstnew(buf, (ft_strlen(buf) + 1)));
 		ft_strdel(&buf);
 	}
-	if (g_error_nbr >= 0 || !last_validation(head))
-		ft_memdel((void**)&head);
+	//if (g_error_nbr >= 0 || !last_validation(head))
+	//	ft_memdel((void**)&head);
 	ft_strdel(&buf);
 	return (head);
 }

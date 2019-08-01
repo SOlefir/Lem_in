@@ -24,7 +24,7 @@ void	test(t_list *input)
 	{
 		while (temp->next != NULL)
 		{
-			printf("%s\n", (char *) temp->content);
+			printf("%s\n", (char *)temp->content);
 			temp = temp->next;
 		}
 	}

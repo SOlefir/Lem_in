@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 22:08:50 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 18:43:07 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/01 22:04:25 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void			edit_graph(t_room ***graph, int *short_way)
 	}
 }
 
-static void			count_steps_to_end(t_room ***graph, int step)//проверить эту функцию. правильно ли работает рекурссия
+static void			count_steps_to_end(t_room **graph, int step)//проверить эту функцию. правильно ли работает рекурссия
 {
 	int 	i;
 	int 	j;
@@ -66,17 +66,17 @@ static void			count_steps_to_end(t_room ***graph, int step)//проверить 
 	t_room 	*room;
 
 	i = 0;
-	temp = *graph;
+	temp = graph;
 	room = temp[0];
 	while (room->count_steps > step)
 	{
 		j = -1;
 		while (++j <= temp[i]->count_links)
 		{
-			room = temp[i]->links[j]; //проверка на -1;
+			room = graph[temp[i]->links[j]]; //проверка на -1;
 			room->count_steps = room->count_steps > step ?
 								step : room->count_steps;
-			count_steps_to_end(&(temp[i]->links[j]), ++step);
+			count_steps_to_end(&(temp[temp[i]->links[j]]), ++step);
 		}
 		i++;
 	}
@@ -92,7 +92,7 @@ static int			*find_short_way(t_room **graph)
 
 	j = -1;
 	i = -1;
-	count_steps_to_end(&graph, 0);
+	count_steps_to_end(graph, 0);
 	room = graph[g_count_room - 1];
 	way = (int*)ft_memalloc(sizeof(int) * room->count_steps);
 	while (++j != room->count_links)
@@ -101,7 +101,7 @@ static int			*find_short_way(t_room **graph)
 		back = room;
 		room = graph[room->links[j]];//поставить проверку на -1
 		if (back->count_steps <= room->count_steps)
-			room = back->links[j];
+			room = graph[back->links[j]];
 	}
 	room = graph[g_count_room - 1];
 	reverse(&way, room->count_steps);
@@ -116,17 +116,17 @@ t_ways				*dijkstra(t_room ***graph)
 	int		i;
 
 	ways = NULL;
-	count_ways = max_allowable(*graph);(*graph)[g_count_room - 1]->count_links;
+	count_ways = max_allowable(*graph);
 	while (--count_ways >= 0)
 	{
 		short_way = find_short_way(*graph);
-		if (i = is_bottle_neck(ways, short_way))
+		if ((i = is_bottle_neck(ways, short_way)))
 		{
 			(*graph)[short_way[i]]->links[short_way[i + 1]] = -1;
 			ft_memdel((void**)&short_way);
 			continue;
 		}
-		if (is_effective_way(ways, short_way, (*graph)[g_count_room]->count_steps))
+		if (is_effective_way(ways, (*graph)[g_count_room]->count_steps))
 			add_way(&ways, short_way, (*graph)[g_count_room]->count_steps);
 		else
 		{

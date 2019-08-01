@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:42:21 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 18:40:19 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/01 21:50:00 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ _Bool       is_comand(char *str);
 _Bool       is_comment(char *str);
 _Bool		is_unknown(char *str);
 
-_Bool		is_buttle_neek(t_ways *ways, int *short_way);
-_Bool		is_effective_way(t_ways *ways, int *new_way, int steps_new_way);
+_Bool		is_bottle_neck(t_ways *ways, int *short_way);
+_Bool				is_effective_way(t_ways *ways, int steps_new_way);
 
 int			count_links_room(t_list *input, char *str);
 int			count_all_ways(t_ways *lst);
@@ -67,8 +67,8 @@ t_list		*find_link_in_lsts(t_list *list, char *str);
 int			*find_links_room(char *name, t_list *input, 
 								t_room **graph, int count_links);
 
-void		reverse(int *way, int size);
-int			*divorce(int *way, int *start, int *end);
+void		reverse(int **way, int size);
+int			*divorce(t_ways *way_a, t_ways *way_b, int *start, int *end);
 
 t_ways		*disjoint_path_finding(t_room ***graph);
 t_ways		*dijkstra(t_room ***graph);

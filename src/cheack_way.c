@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:05:14 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 18:40:05 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/01 21:46:18 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,21 @@ static int			count_of_overlap_rooms(int *room1, int *room2)
 	return (overl);
 }
 
-_Bool				is_buttle_neek(t_ways *ways, int *short_way)
+_Bool				is_bottle_neck(t_ways *ways, int *short_way)
 {
 	int		i;
-	t_ways *this;
 
 	i = -1;
 	while (ways->next != NULL)
 	{
-		if (count_of_overlap_rooms(this->way, short_way) == 1)
+		if (count_of_overlap_rooms(ways->way, short_way) == 1)
 			return (1);
 		ways = ways->next;
 	}
 	return (0);
 }
 
-_Bool				is_effective_way(t_ways *ways, int *new_way, int steps_new_way)
+_Bool				is_effective_way(t_ways *ways, int steps_new_way)
 {
 	int	ants;
 	int	all_steps;

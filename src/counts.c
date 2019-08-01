@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 19:45:52 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 18:38:04 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/01 21:13:42 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int			count_links_room(t_list *input, char *str)
 	int		j;
 
 	i = -1;
+	j = 0;
 	count_links = 0;
 	while (input->next != NULL)
 	{
