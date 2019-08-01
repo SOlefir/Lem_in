@@ -16,23 +16,27 @@ static int			find_room_index(char *links, t_room **all_rooms, char *room_a)
 {
 	int		y;
 	int		i;
+	int     j;
 	char	*link;
 	t_room 	*room;
 
 	y = -1;
 	i = -1;
-	link = ft_strstr(links, room_a);
-	if (link == links)
+	j = 0;
+	link = ft_strstr(links, room_a);//функция возвращает нал
+	if (link == NULL)
 	{
+		link = links;
 		while (link[++i])
 			if (link[i] == '-')
-				break;
-		link[i] = '\0';
+				while (links[++i] != '\0')
+					link[j++] = link[i];
+		link[j] = '\0';
 	}
 	while (++y < g_count_room)
 	{
 		room = all_rooms[y];
-		if (ft_strcmp(link, room->name) == 0)
+		if (ft_strcmp(link, room->name) == 0) //будет работать, если обрезать координаты
 			return (y);
 	}
 	return (0);

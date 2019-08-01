@@ -39,7 +39,7 @@ static t_room		*make_room(char *room_name, int y)
 
 	room = (t_room*)ft_memalloc(sizeof(t_room));
 	room->count_steps = g_count_links;
-	room->name = ft_strdup(room_name);
+	room->name = ft_strdup(room_name);//обрезать координаты
 	room->index = y;//
 	return (room);
 }
@@ -49,10 +49,12 @@ t_room			**make_graph(t_list *input)
 	t_room	**arr;
 	int		j;
 	int		y;
+	int     i;
 
 	y = 0;
+	i = -1;
 	arr = (t_room**)ft_memalloc(sizeof(t_room*) * g_count_room + 1);
-	while (input != NULL || ++y < (g_count_room - 1))
+	while (input != NULL)
 	{
 		if (is_comand((char *)input->content))
 		{
@@ -62,12 +64,14 @@ t_room			**make_graph(t_list *input)
 		}
 		else if (is_comment((char *)input->content))
 			continue;
-		else if (is_room((char *)input->content))
+		else if (is_room((char *)input->content) && ++y < (g_count_room - 1))
 			arr[y] = make_room(input->content, y);
 		else if (is_link((char *)input->content))
 			break;
 		input = input->next;
 	}
+	while (arr[++i] != NULL)
+		printf("[%s] %d %d\n", arr[i]->name, arr[i]->index);
 	add_links(&arr, input);
 	return (arr);
 }

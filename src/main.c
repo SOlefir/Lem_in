@@ -22,15 +22,21 @@ int		main(void)
 {
 	t_list		*input;
 	t_room		**graph;
+	int         i;
 	//t_ways		*ways;
 	
-	fd = open("farm.txt", O_RDONLY);//
+	fd = open("../farm.txt", O_RDONLY);//
 	printf("FD: %d\n", fd);//
 	input = validation_and_write_in_lst();
-	test(input);//
+	//test(input);//
 	if (g_error_nbr >= 0)
 		return (errors());//дописать пояснение ошибок 6 - 8
 	graph = make_graph(input);
+	i = -1;
+	if (graph == NULL)
+		printf("NULL\n");
+	while (graph[++i] != NULL)
+		printf("%s %d %d\n", graph[i]->name, graph[i]->index, graph[i]->count_links);
 	/*ways = disjoint_path_finding(&graph);
 	//let_ants_go(ways, graph);*/
 	return (1);
