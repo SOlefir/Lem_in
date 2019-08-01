@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 15:01:18 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 20:38:19 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/01 20:46:28 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static _Bool	link_in_rooms(t_list *head)
 	}
 	if (head != NULL && is_link((char*)head->next->content) &&
 	    is_room((char*)head->content))
+		return (1);
 	return (0);
 }
 
