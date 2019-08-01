@@ -6,13 +6,13 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 19:45:52 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/31 20:49:02 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/01 18:38:04 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int		count_lst(t_ways *lst)
+int			count_all_ways(t_ways *lst)
 {
 	int	count;
 
@@ -25,7 +25,7 @@ int		count_lst(t_ways *lst)
 	return (count);
 }
 
-int		count_all_steps(t_ways *ways)
+int			count_all_steps(t_ways *ways)
 {
 	int	steps;
 
@@ -38,22 +38,34 @@ int		count_all_steps(t_ways *ways)
 	return (steps);
 }
 
-int		count_len_way(int *way)
+int			max_allowable(t_room **graph)
 {
-	int	len;
+	int	min_start;
+	int	min_end;
 
-	len = 0;
-	while (way[len] != NULL)
-		len++;
-	return (len);
+	min_start = graph[0]->count_links;
+	min_end = graph[g_count_room - 1]->count_links;
+	return (min_start <= min_end ? min_start : min_end);
 }
 
-int		max_allowable(int *start, int *end)
+int			count_links_room(t_list *input, char *str)
 {
-	int	i;
-	int j;
+	int		count_links;
+	int		i;
+	int		j;
 
-	i = count_len_way(start);
-	j = count_len_way(end);
-	return (i <= j ? i : j);
+	i = -1;
+	count_links = 0;
+	while (input->next != NULL)
+	{
+		if (is_link((char*)input->content))
+		{
+			while (((char*)input->content)[++i] != '\0' && 
+					((char*)input->content)[i] == str[i])		
+					j++;
+			count_links += (j == ((int)input->content_size - 1)) ? 1 : 0;
+		}
+		input = input->next;
+	}
+	return (count_links);
 }

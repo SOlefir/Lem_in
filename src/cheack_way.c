@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:05:14 by solefir           #+#    #+#             */
-/*   Updated: 2019/07/31 17:32:48 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/01 18:40:05 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,19 @@ _Bool				is_buttle_neek(t_ways *ways, int *short_way)
 	return (0);
 }
 
-_Bool				is_effective_way(t_ways *ways, int *new_way)
+_Bool				is_effective_way(t_ways *ways, int *new_way, int steps_new_way)
 {
 	int	ants;
 	int	all_steps;
 	int	whith_new_way;
 	int	count_ways;
 
-	count_ways = count_lst(ways);
+	count_ways = count_all_ways(ways);
 	ants = (g_count_ants / count_ways) + (g_count_ants % count_ways);
-	all_steps = count_all_step(ways) / count_ways;
-	all_steps += count_all_step(ways) % count_ways;
-	whith_new_way = (count_len_way(new_way) + all_steps) / (count_ways + 1);
-	whith_new_way += (count_len_way(new_way) + all_steps) % (count_ways + 1);
+	all_steps = count_all_steps(ways) / count_ways;
+	all_steps += count_all_steps(ways) % count_ways;
+	whith_new_way = (steps_new_way + all_steps) / (count_ways + 1);
+	whith_new_way += (steps_new_way + all_steps) % (count_ways + 1);
 	whith_new_way += (g_count_ants / count_ways) + (g_count_ants % count_ways);
 	all_steps += (g_count_ants / count_ways + 1) +
 												(g_count_ants % count_ways + 1);

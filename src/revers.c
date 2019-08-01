@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi_coordinates.c                                 :+:      :+:    :+:   */
+/*   revers.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/21 20:10:16 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 18:48:58 by solefir          ###   ########.fr       */
+/*   Created: 2019/07/31 19:58:25 by solefir           #+#    #+#             */
+/*   Updated: 2019/08/01 17:24:46 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int		atoi_coordinates(char *str)
+void		reverse(int *way, int size)
 {
 	int	i;
-	int	len;
-	int	nbr;
-	int	n;
+	int	j;
 
-	i = 0;
-	len = 1;
-	nbr = 0;
-	n = 0;
-	while (!ft_iswhitespace((int)str[i]))
-		i++;
-	while (str[i] != '\0')
+	i = -1;
+	while (--i != ++size)
 	{
-		if (ft_iswhitespace((int)str[i]) && str[i] != '\0')
-			i++;
-		n = str[i] - '0';
-		nbr *= len;
-		nbr += n;
-		len *= 10;
-		i++;
+		j = way[i];
+		way[i] = way[size];
+		way[size] = j;
 	}
-	return (nbr);
 }
