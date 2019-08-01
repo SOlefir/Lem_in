@@ -16,11 +16,11 @@ static _Bool	room_in_links(t_list *head)
 {
 	while (head != NULL)
 	{
-		while (!is_link((char *)head->content))
-			head = head->next;
-		head = head->next;
-		if (is_room((char *)head->content))
+		if (is_link((char *)head->content &&
+		is_room((char *)head->next->content) &&
+		is_link((char *)head->next->next->content))
 			return (1);
+		head = head->next;
 	}
 	return (0);
 }
@@ -29,11 +29,11 @@ static _Bool	link_in_rooms(t_list *head)
 {
 	while (head != NULL)
 	{
-		while (!is_room((char *)head->content))
-			head = head->next;
-		head = head->next;
-		if (is_link((char *)head->content))
+		if (is_room((char *)head->content &&
+			is_link((char *)head->next->content) &&
+			is_room((char *)head->next->next->content))
 			return (1);
+		head = head->next;
 	}
 	return (0);
 }

@@ -57,7 +57,7 @@ _Bool	is_comand(char *str)
 	}
 	else if (ft_strcmp("##end", str) == 0)
 	{
-		g_start++;
+		g_end++;
 		return (1);
 	}
 	return (0);
