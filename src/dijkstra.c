@@ -58,13 +58,13 @@ static void			edit_graph(t_room ***graph, int *short_way, int size_way)
 			continue;
 		(*graph)[short_way[i]]->links[j] = -1;
 	}
-	room = (*graph)[short_way[size_way]];
-	while (room->links[j] != short_way[size_way - 1] && room->links[j] > 0)
+	room = (*graph)[short_way[size_way - 1]];
+	while (room->links[j] != short_way[size_way - 2] && room->links[j] > 0)
 		j++;
 	if (room->links[j] > 0)
 		(*graph)[short_way[i]]->links[j] = -1;
-	/*i = 0;
-	while (++i < g_count_room)
+	i = 0;
+	/*while (++i < g_count_room)
 		(*graph)[i]->count_steps = g_count_links;*/
 }
 
@@ -134,9 +134,9 @@ t_ways				*dijkstra(t_room ***graph)
 
 	ways = NULL;
 	count_ways = max_allowable(*graph);
+	count_steps_to_end(*graph);
 	while (--count_ways >= 0)
 	{
-		count_steps_to_end(*graph);
 		size_way = find_short_way(*graph, &short_way);
 		if ((i = is_bottle_neck(ways, short_way)))
 		{
@@ -158,7 +158,7 @@ t_ways				*dijkstra(t_room ***graph)
 
 void	print_graf(t_room **graph)
 {
-	/*int i;
+	int i;
 	int j;
 
 	i = -1;
@@ -169,9 +169,9 @@ void	print_graf(t_room **graph)
 			printf("(%d)", graph[i]->links[j]);
 		j = -1;
 		printf("\n");
-	}*/
+	}
 
-	int j = -1;
+/*	int j = -1;
 	int i = -1;
 	while (++i < g_count_room)
 	{
@@ -180,7 +180,7 @@ void	print_graf(t_room **graph)
 			printf("(%d)", graph[i]->links[j]);
 		j = -1;
 		printf("\n");
-	}
+	}*/
 }
 
 void	print_way(int *way, int size_way)
