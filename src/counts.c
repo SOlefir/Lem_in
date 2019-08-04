@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 19:45:52 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 21:13:42 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/02 20:27:49 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,13 @@ int			max_allowable(t_room **graph)
 int			count_links_room(t_list *input, char *str)
 {
 	int		count_links;
-	int		i;
-	int		j;
 
-	i = -1;
-	j = 0;
 	count_links = 0;
-	while (input->next != NULL)
+	while (input != NULL)
 	{
 		if (is_link((char*)input->content))
-		{
-			while (((char*)input->content)[++i] != '\0' && 
-					((char*)input->content)[i] == str[i])		
-					j++;
-			count_links += (j == ((int)input->content_size - 1)) ? 1 : 0;
-		}
+			if (ft_strstr((char*)input->content, str))
+				count_links++;
 		input = input->next;
 	}
 	return (count_links);

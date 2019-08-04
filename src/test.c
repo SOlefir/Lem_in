@@ -22,7 +22,7 @@ void	test(t_list *input)
 		printf("input == NULL\n");
 	else
 	{
-		while (temp->next != NULL)
+		while (temp != NULL)
 		{
 			printf("%s\n", (char *)temp->content);
 			temp = temp->next;

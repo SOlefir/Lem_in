@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:42:21 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 21:50:00 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/02 16:52:03 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ int		fd;//
 **		FUNCTIONS:
 */
 
+void print_int(int *arr, size_t size);
 void		test(t_list *input);//
 
 t_list		*validation_and_write_in_lst(void);
 void		write_in_list(t_list **head, t_list *new);
 _Bool		last_validation(t_list *head);
 int			errors(void);
+char		*cut_coordinates(char *room_name);
 
 t_room		**make_graph(t_list *input);
 int			atoi_coordinates(char *str);

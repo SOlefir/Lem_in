@@ -14,7 +14,7 @@
 
 int		g_start = 0;
 int		g_end = 0;
-int     g_error_nbr = -1;
+int		g_error_nbr = -1;
 
 static _Bool	uniq_rm_crd(char *str, t_list *input)
 {

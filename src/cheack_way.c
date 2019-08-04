@@ -39,7 +39,7 @@ _Bool				is_bottle_neck(t_ways *ways, int *short_way)
 	int		i;
 
 	i = -1;
-	while (ways->next != NULL)
+	while (ways != NULL)
 	{
 		if (count_of_overlap_rooms(ways->way, short_way) == 1)
 			return (1);

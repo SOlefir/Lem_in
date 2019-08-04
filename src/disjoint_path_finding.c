@@ -62,12 +62,12 @@ t_ways			*disjoint_path_finding(t_room ***graph)
 	i = 0;
 	ways = dijkstra(graph);
 	temp = ways;
-	while (temp->next != NULL)
+	/*while (temp->next != NULL)
 	{
 		if ((inter = have_intersection(temp->way, temp->len_way, ways)))
 			bhandari_disijoint(&temp, &inter, 0);
 		temp = temp->next;
 	}
-	ways = temp;
+	ways = temp;*/
 	return (ways);
 }

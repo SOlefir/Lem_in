@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 16:52:07 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 21:39:07 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/02 20:55:41 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,16 @@
 
 static	void		add_links(t_room ***rooms, t_list *input)
 {
-	t_room *temp;
-	int		y;
+	t_room  *temp;
+	int     y;
 
 	y = -1;
-	while (++y <= g_count_room)
+	while (++y < g_count_room && temp != NULL)
 	{
 		temp = (*rooms)[y];
-		while (!is_link(input->content))
-			input = input->next;
-		if (is_link(input->content))
-		{
-			temp->count_links = count_links_room(input, temp->name);
-			temp->links = find_links_room(temp->name, input, *rooms,
+		temp->count_links = count_links_room(input, temp->name);
+		temp->links = find_links_room(temp->name, input, *rooms,
 															temp->count_links);
-		}
-		(*rooms)[y] = temp;
 	}
 }
 
@@ -39,7 +33,7 @@ static t_room		*make_room(char *room_name, int y)
 
 	room = (t_room*)ft_memalloc(sizeof(t_room));
 	room->count_steps = g_count_links;
-	room->name = ft_strdup(room_name);//обрезать координаты
+	room->name = cut_coordinates(room_name);
 	room->index = y;//
 	return (room);
 }
@@ -47,31 +41,29 @@ static t_room		*make_room(char *room_name, int y)
 t_room			**make_graph(t_list *input)
 {
 	t_room	**arr;
+	t_list  *temp;
 	int		j;
 	int		y;
-	int     i;
 
 	y = 0;
-	i = -1;
-	arr = (t_room**)ft_memalloc(sizeof(t_room*) * g_count_room + 1);
-	while (input != NULL)
+	temp = input;
+	arr = (t_room**)ft_memalloc(sizeof(t_room*) * g_count_room);
+	while (temp != NULL)
 	{
-		if (is_comand((char *)input->content))
+		if (is_comand((char *)temp->content))
 		{
-			j = ((char *)input->content)[2] == 's' ? 0 : (g_count_room - 1);
-			input = input->next;
-			arr[j] = make_room(input->content, j);
+			j = ((char *)temp->content)[2] == 's' ? 0 : (g_count_room - 1);
+			temp = temp->next;
+			arr[j] = make_room(temp->content, j);
 		}
-		else if (is_comment((char *)input->content))
+		else if (is_comment((char *)temp->content))
 			continue;
-		else if (is_room((char *)input->content) && ++y < (g_count_room - 1))
-			arr[y] = make_room(input->content, y);
-		else if (is_link((char *)input->content))
+		else if (is_room((char *)temp->content) && ++y < (g_count_room - 1))
+			arr[y] = make_room(temp->content, y);
+		else if (is_link((char *)temp->content))
 			break;
-		input = input->next;
+		temp = temp->next;
 	}
-	while (arr[++i] != NULL)
-		printf("[%s] %d %d\n", arr[i]->name, arr[i]->index);
 	add_links(&arr, input);
 	return (arr);
 }
