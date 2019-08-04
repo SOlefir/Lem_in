@@ -55,8 +55,11 @@ _Bool				is_effective_way(t_ways *ways, int steps_new_way)
 	int	whith_new_way;
 	int	count_ways;
 
+	if (ways == NULL)
+		return (1);
 	count_ways = count_all_ways(ways);
 	ants = (g_count_ants / count_ways) + (g_count_ants % count_ways);
+
 	all_steps = count_all_steps(ways) / count_ways;
 	all_steps += count_all_steps(ways) % count_ways;
 	whith_new_way = (steps_new_way + all_steps) / (count_ways + 1);

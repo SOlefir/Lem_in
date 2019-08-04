@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:42:21 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/02 16:52:03 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/04 20:20:11 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ int		fd;//
 **		FUNCTIONS:
 */
 
-void print_int(int *arr, size_t size);
+void 		print_int(int *arr, size_t size);
 void		test(t_list *input);//
 
+int			is_min_steps(t_room **graph, t_room *room);
 t_list		*validation_and_write_in_lst(void);
 void		write_in_list(t_list **head, t_list *new);
 _Bool		last_validation(t_list *head);
