@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 20:49:43 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/05 13:47:33 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/05 14:41:04 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,13 @@ t_ways			*disjoint_path_finding(t_room ***graph)
 	ways = dijkstra(graph);
 	print_ways(ways);
 	temp = ways;
-	/*while (temp->next != NULL)
+	inter = NULL;
+	while (temp->next != NULL)
 	{
 		if ((inter = have_intersection(temp->way, temp->len_way, ways)))
 			bhandari_disijoint(&temp, &inter, 0);
 		temp = temp->next;
 	}
-	ways = temp;*/
+	ways = temp;
 	return (ways);
 }

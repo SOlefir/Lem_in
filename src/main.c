@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:40:04 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/05 13:50:12 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/05 14:40:58 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int		main(void)
 {
 	t_list		*input;
 	t_room		**graph;
-	int         i;
 	int         j;
 	t_ways		*ways;
 
