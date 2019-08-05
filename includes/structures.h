@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:47:11 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/05 14:10:50 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/05 14:28:08 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,13 @@ struct			s_room
 	int			index;
 	int			count_steps;// поумолчанию g_count_links. дейкстра меняет это число
 	int			count_links;
-	t_room		*links;//индекс комнаты с которой линк
-};
-
-struct			s_way
-{
-	int		index;
-	char	*name;
-	t_way	*next;
+	int			*links;//индекс комнаты с которой линк
 };
 
 struct			s_ways
 {
 	int		*way;
 	int		len_way;
-	t_way	*head_way;
 	t_ways	*next;
 };
 
