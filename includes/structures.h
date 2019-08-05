@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:47:11 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 21:45:09 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/05 14:10:50 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct	s_data		t_data;
 typedef struct	s_room		t_room;
 typedef struct	s_ways		t_ways;
+typedef struct	s_way		t_way;
 
 struct			s_data
 {
@@ -29,13 +30,21 @@ struct			s_room
 	int			index;
 	int			count_steps;// поумолчанию g_count_links. дейкстра меняет это число
 	int			count_links;
-	int			*links;//индекс комнаты с которой линк
+	t_room		*links;//индекс комнаты с которой линк
+};
+
+struct			s_way
+{
+	int		index;
+	char	*name;
+	t_way	*next;
 };
 
 struct			s_ways
 {
 	int		*way;
 	int		len_way;
+	t_way	*head_way;
 	t_ways	*next;
 };
 

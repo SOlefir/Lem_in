@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 20:49:43 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 21:59:56 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/05 13:47:33 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_ways			*disjoint_path_finding(t_room ***graph)
 	j = -1;
 	i = 0;
 	ways = dijkstra(graph);
+	print_ways(ways);
 	temp = ways;
 	/*while (temp->next != NULL)
 	{

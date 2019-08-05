@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 22:08:50 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/04 21:25:44 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/05 14:04:19 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,38 +34,6 @@ static void			add_way(t_ways **ways, int *short_way, int size_way)
 		(*ways)->next = NULL;
 	    *ways = temp;
     }
-}
-
-static void			edit_graph(t_room ***graph, int *short_way, int size_way)
-{
-	t_room	*room;
-	int 	j;
-	int		i;
-
-	i = 0;
-	j = 0;
-	room = (*graph)[short_way[i]];
-	while (room->links[j] != short_way[i + 1] && room->links[j] > 0)
-		j++;
-	(*graph)[short_way[i]]->links[j] = -1;
-	while (++i <= size_way)
-	{
-		room = (*graph)[short_way[i]];
-		j = 0;
-		while (room->links[j] != short_way[i - 1])
-			j++;
-		if (room->links[j] < 0)
-			continue;
-		(*graph)[short_way[i]]->links[j] = -1;
-	}
-	room = (*graph)[short_way[size_way - 1]];
-	while (room->links[j] != short_way[size_way - 2] && room->links[j] > 0)
-		j++;
-	if (room->links[j] > 0)
-		(*graph)[short_way[i]]->links[j] = -1;
-	i = 0;
-	/*while (++i < g_count_room)
-		(*graph)[i]->count_steps = g_count_links;*/
 }
 
 static void			count_steps_to_end(t_room **graph)
@@ -152,61 +120,8 @@ t_ways				*dijkstra(t_room ***graph)
 			break;
 		}
 		edit_graph(graph, short_way, size_way);//направление для короткого пути поменять +
-	}		 					//во всем графе поменять каунт степс на максимум
+		printf("\nafter edit\n\n");
+		print_graph(*graph);
+	}											//во всем графе поменять каунт степс на максимум и добавить в этот цикл просчет шагов
 	return (ways);
-}
-
-void	print_graf(t_room **graph)
-{
-	int i;
-	int j;
-
-	i = -1;
-	while (++i < g_count_room)
-	{
-		printf("[%d]'%s' ", i, graph[i]->name);
-		while (++j < graph[i]->count_links)
-			printf("(%d)", graph[i]->links[j]);
-		j = -1;
-		printf("\n");
-	}
-
-/*	int j = -1;
-	int i = -1;
-	while (++i < g_count_room)
-	{
-		printf("[%d]'%s' steps: %d\n", i, graph[i]->name, graph[i]->count_steps);
-		while (++j < graph[i]->count_links)
-			printf("(%d)", graph[i]->links[j]);
-		j = -1;
-		printf("\n");
-	}*/
-}
-
-void	print_way(int *way, int size_way)
-{
-	int i;
-
-	i = -1;
-	while (++i < size_way)
-		printf("%d ", way[i]);
-	printf("\n");
-}
-
-void	print_ways(t_ways *ways)
-{
-	int	i;
-
-	i = -1;
-	if (ways == NULL)
-		printf("NULL");
-	while (ways != NULL)
-	{
-		printf("\n");
-		printf(" [%d] ", ways->len_way);
-		while (++i < ways->len_way)
-			printf(" %d ", ways->way[i]);
-		printf("\n");
-		ways = ways->next;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:40:04 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/03 15:26:20 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/05 13:50:12 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,7 @@ int		main(void)
 	if (g_error_nbr >= 0)
 		return (errors());//дописать пояснение ошибок 6 - 8
 	graph = make_graph(input);
-	i = -1;
-	while (++i < g_count_room)
-	{
-		printf("[%d]'%s' ", i, graph[i]->name);
-		while (++j < graph[i]->count_links)
-			printf("(%d)", graph[i]->links[j]);
-		j = -1;
-		printf("\n");
-	}
+	print_graph(graph);
 	ways = disjoint_path_finding(&graph);
 	//let_ants_go(ways, graph);
 	return (1);

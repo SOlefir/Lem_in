@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:42:21 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/04 20:20:11 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/05 14:04:32 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,15 @@ int		fd;//
 **		FUNCTIONS:
 */
 
+///////////////////////////////////////////////////////
+
 void 		print_int(int *arr, size_t size);
-void		test(t_list *input);//
+void		print_graph(t_room **graph);
+void		print_ways(t_ways *ways);
+void		print_way(int *way, int size_way);
+void		test(t_list *input);
+
+///////////////////////////////////////////////////////
 
 int			is_min_steps(t_room **graph, t_room *room);
 t_list		*validation_and_write_in_lst(void);
@@ -72,6 +79,7 @@ int			*find_links_room(char *name, t_list *input,
 
 void		reverse(int **way, int size);
 int			*divorce(t_ways *way_a, t_ways *way_b, int *start, int *end);
+void		edit_graph(t_room ***graph, int *short_way, int size_way);
 
 t_ways		*disjoint_path_finding(t_room ***graph);
 t_ways		*dijkstra(t_room ***graph);
