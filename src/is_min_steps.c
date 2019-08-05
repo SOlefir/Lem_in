@@ -26,8 +26,10 @@ int			is_min_steps(t_room **graph, t_room *room)
 	i = 0;
 	while (++i < room->count_links)
 	{
-		if (room->links[i] < 0)
+		while (room->links[i] < 0)
 			i++;
+		if (i >= room->count_links)
+			break;
 		if (i < room->count_links &&
 			graph[room->links[i]]->count_steps <= steps)
 		{

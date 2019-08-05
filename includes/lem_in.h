@@ -72,6 +72,7 @@ int			count_links_room(t_list *input, char *str);
 int			count_all_ways(t_ways *lst);
 int			count_all_steps(t_ways *ways);
 int			max_allowable(t_room **graph);
+void		count_steps_to_end(t_room **graph);
 
 t_list		*find_link_in_lsts(t_list *list, char *str);
 int			*find_links_room(char *name, t_list *input, 

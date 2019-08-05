@@ -93,3 +93,35 @@ int		main(void)
 	}
 	go_to_finish;
 	return (1);
+
+
+
+	int 	j;
+	int 	step;
+	t_room	*room;
+	t_room	*link;
+
+	step = 0;
+	room = graph[0];
+	room->count_steps = step;
+	while (room != NULL && step <= room->count_steps)
+	{
+		j = -1;
+		++step;
+		while (++j < room->count_links)
+		{
+			while (room->links[j] < 0 && j < room->count_links)
+				j++;
+			if (j >= room->count_links)
+				break;
+			link = graph[room->links[j]];
+			link->count_steps = link->count_steps > step ? step : link->count_steps;
+		}
+		j = 0;
+		while (j < room->count_links && room->links[j] > 0 &&
+				graph[room->links[j]]->count_steps <= step)
+			j++;
+		if (j < room->count_links)
+			room = graph[room->links[j]];
+	}
+}

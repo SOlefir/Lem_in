@@ -29,11 +29,17 @@ void			edit_graph(t_room ***graph, int *short_way, int size_way)
 	int 	i;
 
 	i = 0;
-	del_link(&(*graph)[short_way[i]], short_way[i + 1]); //удалить линк со стартом
+	while (++i < g_count_room)
+		(*graph)[i]->count_steps = g_count_links;
+	i = 0;
+	del_link((&(*graph)[short_way[i]]), short_way[i + 1]); //удалить линк со стартом
+	del_link(&(*graph)[short_way[size_way - 2]], short_way[size_way - 1]);
+	count_steps_to_end(*graph);
+	i = 0;
 	while (++i < size_way)
 		del_link(&(*graph)[short_way[i]], short_way[i - 1]); // меняю направление для пути удаля линки с перентами
 	i -= 2;
-	del_link(&(*graph)[short_way[i]], short_way[i - 1]); // удалить линк с эндом
+	 // удалить линк с эндом
 }
 	
 	

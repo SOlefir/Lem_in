@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 22:08:50 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/05 14:04:19 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/05 21:47:53 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,33 +36,35 @@ static void			add_way(t_ways **ways, int *short_way, int size_way)
     }
 }
 
-static void			count_steps_to_end(t_room **graph)
+void			count_steps_to_end(t_room **graph)
 {
-	int 	j;
-	int 	step;
 	t_room	*room;
-	t_room	*link;
+	t_room	*back;
+	int		i;
+	int		j;
+	int		step;
 
+	i = -1;
 	step = 0;
 	room = graph[0];
-	room->count_steps = step;
+	room->count_steps = 0;
 	while (step <= room->count_steps)
 	{
-		j = -1;
-		++step;
-		while (++j < room->count_links)
+		i = -1;
+		step++;
+		while (++i < room->count_links)
 		{
-			while (room->links[j] < 0 && j < room->count_links)
-				j++;
-			link = graph[room->links[j]];
-			link->count_steps = link->count_steps > step ? step : link->count_steps;
+			while (room->links[i] < 0 && i < room->count_links)
+				i++;
+			if (i >= room->count_links)
+				room = graph[room->links[i]];
+			else
+				break;
+			if (room->count_steps <= step)
+				room->count_steps = step;
 		}
-		j = 0;
-		while (room->links[j] < 0 || (graph[room->links[j]]->count_steps < step &&
-															j < room->count_links))
-			j++;
-		if (j < room->count_links)
-			room = graph[room->links[j]];
+		while ()
+		room = graph[]
 	}
 }
 
@@ -119,9 +121,11 @@ t_ways				*dijkstra(t_room ***graph)
 			ft_memdel((void**)&short_way);
 			break;
 		}
+		print_graph(*graph);
 		edit_graph(graph, short_way, size_way);//направление для короткого пути поменять +
 		printf("\nafter edit\n\n");
 		print_graph(*graph);
+		print_way(short_way, size_way);
 	}											//во всем графе поменять каунт степс на максимум и добавить в этот цикл просчет шагов
 	return (ways);
 }
