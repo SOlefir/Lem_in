@@ -89,7 +89,7 @@ static int			find_short_way(t_room **graph, int **way)
 		(*way)[i] = is_min_steps(graph, room);
 		room = graph[(*way)[i]];
 	}
-	return (size_way);
+	return (++size_way);
 }
 
 t_ways				*dijkstra(t_room ***graph)
