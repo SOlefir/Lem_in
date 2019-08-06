@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:40:04 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/06 17:38:30 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/06 20:42:29 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		g_count_ants = 0;
 int		g_count_room = 0;
+int 	g_count_links = 0;
 
 int		fd = 0;//
 

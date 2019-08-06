@@ -6,7 +6,7 @@
 #    By: solefir <solefir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 21:25:16 by dquitzon          #+#    #+#              #
-#    Updated: 2019/08/06 16:03:20 by solefir          ###   ########.fr        #
+#    Updated: 2019/08/06 20:41:51 by solefir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIB = libft.a
 SOURCES = $(DIR)main.c $(DIR)validation.c $(DIR)validation_help.c\
 		$(DIR)atoi_coordinates.c  $(DIR)errors.c $(DIR)validation_dop.c\
 		$(DIR)write_in_lst.c $(DIR)find.c $(DIR)counts.c\
-		$(DIR)new.c $(DIR)make_graph.c\
+		$(DIR)dijkstra.c $(DIR)make_graph.c\
 		$(DIR)test.c $(DIR)cut_coordinates.c\
 		#$(DIR)edit_graph.c
 
