@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 16:52:07 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/02 20:55:41 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/06 17:37:54 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static t_room		*make_room(char *room_name, int y)
 	t_room *room;
 
 	room = (t_room*)ft_memalloc(sizeof(t_room));
-	room->count_steps = g_count_links;
 	room->name = cut_coordinates(room_name);
-	room->index = y;//
+	room->index = y;//ннада?
+	room->occup = NULL;
 	return (room);
 }
 

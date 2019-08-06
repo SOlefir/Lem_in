@@ -6,12 +6,38 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 19:45:52 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/06 17:30:02 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/06 16:00:42 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
+/*int			count_all_ways(t_ways *lst)
+{
+	int	count;
+
+	count = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		count++;
+	}
+	return (count);
+}
+
+int			count_all_steps(t_ways *ways)
+{
+	int	steps;
+
+	steps = 0;
+	while (ways != NULL)
+	{
+		steps += ways->len_way;
+		ways = ways->next;
+	}
+	return (steps);
+}
+*/
 int			max_allowable(t_room **graph)
 {
 	int	min_start;

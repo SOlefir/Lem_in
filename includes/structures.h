@@ -6,38 +6,30 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:47:11 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/05 14:28:08 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/06 17:40:34 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct	s_data		t_data;
 typedef struct	s_room		t_room;
-typedef struct	s_ways		t_ways;
 typedef struct	s_way		t_way;
-
-struct			s_data
-{
-	char		**rooms;
-	int			**links;
-};
 
 struct			s_room
 {
 	char		*name;
 	int			index;
-	int			count_steps;// поумолчанию g_count_links. дейкстра меняет это число
 	int			count_links;
-	int			*links;//индекс комнаты с которой линк
+	int			*links;
+	t_way		*occup;
 };
 
-struct			s_ways
+struct			s_way
 {
-	int		*way;
-	int		len_way;
-	t_ways	*next;
+	int			id;
+	t_way		*parent;
+	t_way		*next;
 };
 
 #endif
