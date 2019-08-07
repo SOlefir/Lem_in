@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 21:31:07 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/06 17:35:57 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/07 19:28:59 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,12 @@ static int			find_room_index(char *links, t_room **all_rooms, char *room_a)
 	t_room 	*room;
 
 	y = -1;
-	link = ft_strstr(links, room_a);
-	if (link == links)
-	{
-		link = ft_strchr(links, '-') + 1;
-		i = ft_strlen(link);
-	}
-	else
-	{
-		link = links;
-		i = 0;
-		while (links[i] != '-')
-			i++;
-	}
+	link = (!ft_strncmp(links, room_a, ft_strlen(room_a))) ? ft_strchr(links, '-') + 1 : links;
+	i = (!ft_strchr(link, '-')) ? ft_strlen(link) : ft_strchr(link, '-') - link;
 	while (++y < g_count_room)
 	{
 		room = all_rooms[y];
-		if (ft_strnstr(link, room->name, i))
+		if (!ft_strncmp(link, room->name, i))
 			return (y);
 	}
 	return (0);
@@ -44,9 +33,13 @@ static int			find_room_index(char *links, t_room **all_rooms, char *room_a)
 
 t_list				*find_link_in_input(t_list *input, char *str)
 {
-	while (ft_strstr((char*)input->content, str) == NULL ||
-			is_comment((char*)input->content))
-			input = input->next;
+	while (input != NULL)
+	{
+		if (!ft_strncmp((char*)input->content, str, ft_strlen(str)) ||
+			!ft_strcmp(ft_strchr((char*)input->content, '-') + 1, str))
+			return(input);	
+		input = input->next;
+	}
 	return (input);
 }
 

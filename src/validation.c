@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 17:21:52 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 20:20:26 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/07 16:15:09 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static _Bool	uniq_rm_crd(char *str, t_list *input)
 		{
 			while (!ft_iswhitespace(str[i]) && str[i] != '\0')
 				i++;
-			if (ft_strncmp(str, (char*)input->content, i) == 0)
+			if (ft_strcmp(str, (char*)input->content) == 0)
 				return(0);
 			if ((atoi_coordinates((char*)input->content) ==
 				atoi_coordinates(str)))

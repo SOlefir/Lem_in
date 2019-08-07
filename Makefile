@@ -6,33 +6,33 @@
 #    By: solefir <solefir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 21:25:16 by dquitzon          #+#    #+#              #
-#    Updated: 2019/08/06 20:41:51 by solefir          ###   ########.fr        #
+#    Updated: 2019/08/07 16:08:53 by solefir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 
 DIR = ./src/
-HEADER = includes/lem_in.h includes/structures.h #includes/libft.h
+HEADER = includes/lem_in.h includes/structures_and_globals.h #includes/libft.h
 LIB = libft.a
 
-SOURCES = $(DIR)main.c $(DIR)validation.c $(DIR)validation_help.c\
-		$(DIR)atoi_coordinates.c  $(DIR)errors.c $(DIR)validation_dop.c\
-		$(DIR)write_in_lst.c $(DIR)find.c $(DIR)counts.c\
-		$(DIR)dijkstra.c $(DIR)make_graph.c\
-		$(DIR)test.c $(DIR)cut_coordinates.c\
-		#$(DIR)edit_graph.c
+SOURCES = $(DIR)main.c $(DIR)validation.c $(DIR)validation_help.c			\
+		$(DIR)atoi_coordinates.c  $(DIR)errors.c $(DIR)validation_dop.c		\
+		$(DIR)find.c $(DIR)counts.c											\
+		$(DIR)dijkstra.c $(DIR)make_graph.c $(DIR)for_lists.c 				\
+		$(DIR)test.c $(DIR)cut_coordinates.c								\
+		$(DIR)prints.c $(DIR)untangle_ways.c 								\
 
 OBJ = $(SOURCES:%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	gcc $(FLAGS) -c $(SOURCES) -I $(HEADER)
 	gcc $(OBJ) $(LIB) -o $@
-
+#-fsanitize="address" -g -fno-omit-frame-pointer 
 clean:
 	rm -f $(OBJ)
 
