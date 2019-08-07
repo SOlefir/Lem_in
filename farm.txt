@@ -1,8 +1,8 @@
-10
+12
 ##start
 start 0 0
 ##end
-huita 100 100
+end 100 100
 a 1 1
 b 2 2
 c 3 3
@@ -15,7 +15,7 @@ start-a
 a-b
 b-c
 c-d
-d-huita
+d-end
 start-e
 a-e
 e-b
@@ -24,4 +24,4 @@ f-g
 g-d
 d-h
 c-h
-h-huita
+h-end

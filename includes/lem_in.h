@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:42:21 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 19:26:31 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/07 21:33:28 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ t_list		*validation_and_write_in_lst(void);
 t_room		**make_graph(t_list *input);
 t_way		*dijkstra(t_room ***graph);
 
-int			untangle_ways1(t_room **graph, t_way **way);
-int			untangle_ways2(t_room **graph, t_way **way);
+int			untangle_ways(t_room ***graph, t_way **way);
 
 _Bool		last_validation(t_list *head);
 int			errors(void);

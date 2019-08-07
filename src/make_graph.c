@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 16:52:07 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 16:35:52 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/07 21:14:19 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_room			**make_graph(t_list *input)
 			temp = temp->next;
 			arr[j] = make_room(temp->content, j);
 		}
-		else if (is_comment((char *)temp->content))
+		else if (is_comment((char *)temp->content) && (temp = temp->next))
 			continue;
 		else if (is_room((char *)temp->content) && ++y < (g_count_room - 1))
 			arr[y] = make_room(temp->content, y);

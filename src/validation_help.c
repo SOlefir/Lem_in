@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:14:24 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 16:56:06 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/07 21:39:10 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ _Bool	is_room(char *str)
 	return (s == 2 ? 1 : 0);
 }
 
-_Bool	is_link(char *str) // если это 2 слова с - посередине 
+_Bool	is_link(char *str)
 {
 	int	i;
 	int	link;
@@ -75,7 +75,7 @@ _Bool	is_comment(char *str)
 	return (0);
 }
 
-_Bool	is_unknown(char *str) // если это не похоже на всё, что выше. или если похоже на коммент но с ошибкой, то это не ок
+_Bool	is_unknown(char *str)
 {
 	int	i;
 	int	hash;

@@ -15,7 +15,6 @@ void				out_ways(t_room **graph, t_way *meta)
 			printf("[%s] ", graph[dupl->id]->name);
 		printf("\n\n");
 	}
-	printf("\nLOOP!\n\n\n");
 }
 
 void		print_graph(t_room **graph)

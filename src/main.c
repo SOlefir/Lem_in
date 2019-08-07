@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:40:04 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 19:28:40 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/07 21:15:19 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int		main(int ac, char **av)
 	if (ac != 2)
 		return (0);
 	fd = open(av[1], O_RDONLY);//
-	printf("FD: %d\n", fd);//
 	input = validation_and_write_in_lst();//дописать фнкцию на уникальность ссылки
 	//test(input);//
 	if (g_error_nbr >= 0)

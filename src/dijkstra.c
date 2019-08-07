@@ -6,11 +6,13 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:52:16 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 19:28:18 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/07 21:56:58 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+g_efficiency = 0;
 
 static int			check_presence(t_way *list, int id)
 {
@@ -104,9 +106,28 @@ static t_way		*new_way(t_room ***graph, t_way *list)
 	return ((way && !way->id) ? way : NULL);
 }
 
+int					calc_efficiency(t_way *meta)
+{
+	t_way	*path;
+	int		efc;
+	int		max;
+	int		sum;
+
+	path = meta;
+	max = 0;
+	sum = 0;
+	while ((path = path->next))
+		if ((sum += path->len))
+			(max < path->len) ? max = path->len : 0;
+	efc = (g_count_ants - max * meta->len + sum) / meta->len + max - 1
+	+ !!((g_count_ants - max * meta->len + sum) % meta->len);
+	return (efc == (g_efficiency = (g_efficiency > efc) ? efc : g_efficiency));
+}
+
 t_way				*dijkstra(t_room ***graph)
 {
 	t_way	*meta;
+	t_way	*save;
 	t_way	*path;
 
 	meta = new_list(-1, NULL);
@@ -117,10 +138,14 @@ t_way				*dijkstra(t_room ***graph)
 		path = path->next;
 		if (!(path->parent = new_way(graph, 0)))
 			break ;
-		meta->len++;
-		untangle_ways1(*graph, &(path->parent));
+		meta->len += !!path->parent;
+		untangle_ways(graph, &(path->parent));
 		path->len = len_way(path->parent);
 		//out_ways(*graph, meta);
+		if (!calc_efficiency(meta))
+			break ;
+		save = copy_meta(meta);
 	}
+	printf("EFFICIENCY:	%d\n", g_efficiency);
 	return (meta);
 }
