@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 20:20:29 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/01 14:47:11 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/07 23:05:18 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int		errors(void)
 		ft_putstr("The links with rooms have incorrect write.");
 	else if (g_error_nbr == 5)
 		ft_putstr("Not valid write");
+	else if (g_error_nbr == 6)
+		ft_putstr("NO DATA\n");
+	else if (g_error_nbr == 7)
+		ft_putstr("7\n");
+	else if (g_error_nbr == 8)
+		ft_putstr("8\n");
 	ft_putchar('\n');
 	return (0);
 }

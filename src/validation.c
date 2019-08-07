@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 17:21:52 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 21:51:39 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/07 23:38:55 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ t_list			*validation_and_write_in_lst(void)
 		write_in_list(&head, ft_lstnew(buf, (ft_strlen(buf) + 1)));
 		ft_strdel(&buf);
 	}
-	if (g_error_nbr >= 0 || !last_validation(head))
-		ft_memdel((void**)&head);
+	//if (g_error_nbr >= 0 || !last_validation(head))
+	//	ft_memdel((void**)&head);
 	ft_strdel(&buf);
 	return (head);
 }

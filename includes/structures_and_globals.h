@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:47:11 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 21:54:58 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 00:28:25 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ struct			s_way
 {
 	int			id;
 	int			len;
+	int			ant_inside;
 	t_way		*parent;
 	t_way		*next;
 };

@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:40:04 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 21:15:19 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 00:36:24 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ int		main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	fd = open(av[1], O_RDONLY);//
-	input = validation_and_write_in_lst();//дописать фнкцию на уникальность ссылки
+	fd = open(av[1], O_RDONLY);
+	input = validation_and_write_in_lst();
 	//test(input);//
 	if (g_error_nbr >= 0)
-		return (errors());//дописать пояснение ошибок 6 - 8
+		return (errors());
 	graph = make_graph(input);
 	//print_graph(graph);
 	ways = dijkstra(&graph);
 	//let_ants_go(ways, graph);
-	//system("leaks lem-in");
+	system("leaks lem-in");
 	return (1);
 }

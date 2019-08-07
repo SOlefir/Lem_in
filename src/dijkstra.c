@@ -6,13 +6,13 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:52:16 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 21:56:58 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 00:34:35 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-g_efficiency = 0;
+int		g_efficiency = 200000000;
 
 static int			check_presence(t_way *list, int id)
 {
@@ -144,8 +144,9 @@ t_way				*dijkstra(t_room ***graph)
 		//out_ways(*graph, meta);
 		if (!calc_efficiency(meta))
 			break ;
-		save = copy_meta(meta);
+		save = copy_list(meta);
 	}
+	meta = save;
 	printf("EFFICIENCY:	%d\n", g_efficiency);
 	return (meta);
 }

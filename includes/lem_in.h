@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:42:21 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 21:33:28 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 00:16:49 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ void		print_graph(t_room **graph);
 
 ///////////////////////////////////////////////////////
 
+void	  	add_ant_and_print(int ant_id, t_way *ways, t_room **graph);
+int  	 	make_moves(t_way **ws);
+void  		print_moves(t_way **ws, t_room **graph);
+void  		let_ants_go(t_way *ways, t_room **graph);
 
 t_list		*validation_and_write_in_lst(void);
 t_room		**make_graph(t_list *input);
@@ -58,8 +62,9 @@ int			*find_links_room(char *name, t_list *input,
 								t_room **graph, int count_links);
 
 void		write_in_list(t_list **head, t_list *new);
-t_way		*new_list(int id, t_way *parent);
 void		del_list(t_way **list);
+t_way		*new_list(int id, t_way *parent);
+t_way		*copy_list(t_way *meta);
 int			len_way(t_way *way);
 
 #endif

@@ -6,16 +6,11 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:55:14 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 21:57:59 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/07 22:58:18 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-t_way		*copy_list(t_way *meta)
-{
-
-}
 
 t_way		*new_list(int id, t_way *parent)
 {
