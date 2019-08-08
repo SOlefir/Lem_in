@@ -6,7 +6,7 @@
 #    By: solefir <solefir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 21:25:16 by dquitzon          #+#    #+#              #
-#    Updated: 2019/08/08 00:30:12 by solefir          ###   ########.fr        #
+#    Updated: 2019/08/08 00:44:09 by solefir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	gcc $(FLAGS) -c $(SOURCES) -I $(HEADER)
-	gcc $(OBJ) $(LIB) -o $@
-#-fsanitize="address" -g -fno-omit-frame-pointer 
+	gcc -fsanitize="address" -g -fno-omit-frame-pointer $(OBJ) $(LIB) -o $@
 clean:
 	rm -f $(OBJ)
 

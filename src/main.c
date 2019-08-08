@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:40:04 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/08 00:36:24 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 02:46:53 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		main(int ac, char **av)
 	graph = make_graph(input);
 	//print_graph(graph);
 	ways = dijkstra(&graph);
-	//let_ants_go(ways, graph);
-	system("leaks lem-in");
+	let_ants_go(ways, graph);
+	//system("leaks lem-in");
 	return (1);
 }

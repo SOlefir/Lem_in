@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:42:21 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/08 00:16:49 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 01:00:59 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int			*find_links_room(char *name, t_list *input,
 
 void		write_in_list(t_list **head, t_list *new);
 void		del_list(t_way **list);
+void		del_list_of_lists(t_way **list);
 t_way		*new_list(int id, t_way *parent);
 t_way		*copy_list(t_way *meta);
 int			len_way(t_way *way);

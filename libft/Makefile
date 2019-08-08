@@ -6,7 +6,7 @@
 #    By: solefir <solefir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 21:25:16 by dquitzon          #+#    #+#              #
-#    Updated: 2019/08/07 13:22:04 by solefir          ###   ########.fr        #
+#    Updated: 2019/08/08 00:43:04 by solefir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SOURCES = $(SRC)ft_bzero.c $(SRC)ft_memdel.c $(SRC)ft_strclr.c\
     $(SRC)ft_lstiter.c $(SRC)ft_masmemdel.c $(SRC)ft_lstdelcontent.c\
 	$(SRC)ft_iswhitespace.c $(SRC)get_next_line.c
 OBJ = $(SOURCES:%.c=%.o)
-FLAGS = -Wall -Wextra -Werror #-fsanitize="address" -g -fno-omit-frame-pointer
+FLAGS = -Wall -Wextra -Werror -fsanitize="address" -g -fno-omit-frame-pointer
 HEADER = .
 
 all: $(NAME)

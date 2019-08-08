@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:52:16 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/08 00:34:35 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 02:43:55 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int					calc_efficiency(t_way *meta)
 t_way				*dijkstra(t_room ***graph)
 {
 	t_way	*meta;
-	t_way	*save;
+	//t_way	*save;
 	t_way	*path;
 
 	meta = new_list(-1, NULL);
@@ -144,9 +144,10 @@ t_way				*dijkstra(t_room ***graph)
 		//out_ways(*graph, meta);
 		if (!calc_efficiency(meta))
 			break ;
-		save = copy_list(meta);
+		//save = copy_list(meta);
 	}
-	meta = save;
-	printf("EFFICIENCY:	%d\n", g_efficiency);
+	//meta = save;
+	//printf("META:%d\n", meta->next->len);
+	//printf("EFFICIENCY:	%d\n", g_efficiency);
 	return (meta);
 }

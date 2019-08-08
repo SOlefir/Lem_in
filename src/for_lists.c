@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:55:14 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 22:58:18 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 02:52:49 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_way		*new_list(int id, t_way *parent)
 	new->id = id;
 	new->len = 0;
 	new->parent = parent;
+	new->ant_inside = 0;
 	new->next = NULL;
 	return (new);
 }
@@ -44,6 +45,22 @@ void		del_list(t_way **list)
 		{
 			next_node = (*list)->next;
 			free(*list);
+			*list = next_node;
+		}
+		list = NULL;
+	}
+}
+
+void		del_list_of_lists(t_way **list)
+{
+	t_way	*next_node;
+
+	if (list != NULL)
+	{
+		while (*list != NULL)
+		{
+			next_node = (*list)->parent;
+			del_list(list);
 			*list = next_node;
 		}
 		list = NULL;
