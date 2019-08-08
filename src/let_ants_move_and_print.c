@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 00:28:17 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/08 02:56:12 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 16:36:47 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		make_moves(t_way **ws)
 	{
 		while (way->parent)
 			way = way->parent;
-		while (way->next)
+		while (way->next->next)
 		{
 			if (way->parent && way->ant_inside && ++moved)
 				way->parent->ant_inside = way->ant_inside;
@@ -32,7 +32,7 @@ int		make_moves(t_way **ws)
 			way = way->next;
 		}
 	}
-	return moved;
+	return (moved);
 }
 
 void	add_ant_and_print(int ant_id, t_way *ways, t_room **graph)
@@ -61,7 +61,6 @@ void	print_moves(t_way **ws, t_room **graph)
 	int		i;
 	int		j;
 	int		printed;
-	//t_way	*w_iter;
 
 	i = 0;
 	while (++i)
@@ -69,7 +68,9 @@ void	print_moves(t_way **ws, t_room **graph)
 		j = -1;
 		printed = 0;
 		while (ws[++j])
+		{
 			printed += print_one(ws[j], i - 1, graph);
+		}
 		if (!printed)
 			break;
 	}

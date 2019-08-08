@@ -6,13 +6,14 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:52:16 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/08 02:43:55 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 17:04:21 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
 int		g_efficiency = 200000000;
+int		g_mod = 0;
 
 static int			check_presence(t_way *list, int id)
 {
@@ -112,6 +113,7 @@ int					calc_efficiency(t_way *meta)
 	int		efc;
 	int		max;
 	int		sum;
+	int		mod;
 
 	path = meta;
 	max = 0;
@@ -121,13 +123,15 @@ int					calc_efficiency(t_way *meta)
 			(max < path->len) ? max = path->len : 0;
 	efc = (g_count_ants - max * meta->len + sum) / meta->len + max - 1
 	+ !!((g_count_ants - max * meta->len + sum) % meta->len);
+	mod = (g_count_ants - max * meta->len + sum) % meta->len;
+	(g_efficiency > efc) ? g_mod = mod : 0;
 	return (efc == (g_efficiency = (g_efficiency > efc) ? efc : g_efficiency));
 }
 
 t_way				*dijkstra(t_room ***graph)
 {
 	t_way	*meta;
-	//t_way	*save;
+	t_way	*save;
 	t_way	*path;
 
 	meta = new_list(-1, NULL);
@@ -141,13 +145,16 @@ t_way				*dijkstra(t_room ***graph)
 		meta->len += !!path->parent;
 		untangle_ways(graph, &(path->parent));
 		path->len = len_way(path->parent);
-		//out_ways(*graph, meta);
 		if (!calc_efficiency(meta))
 			break ;
-		//save = copy_list(meta);
+		save = copy_list(meta);
+		//out_ways(*graph, save);
+		//printf("\n\nLOOP!\n\n\n");
 	}
-	//meta = save;
-	//printf("META:%d\n", meta->next->len);
-	//printf("EFFICIENCY:	%d\n", g_efficiency);
+	out_ways(*graph, save);
+	printf("G_MOD:	%d\n\n\n", g_mod);
+	printf("META_LEN:	%d\n\n\n", save->len);
+	printf("EFFICIENCY:	%d\n\n", g_efficiency);
+	meta = save;
 	return (meta);
 }

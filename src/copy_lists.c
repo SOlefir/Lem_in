@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 22:29:34 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/08 02:32:36 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 13:55:17 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ static	t_way		*copy_way(t_way *way)
 {
 	t_way	*new;
 	t_way	*front;
-	t_way	*temp;
 
 	new = NULL;
 	new = new_list(-1, NULL);
 	new->len = way->len;
-	temp = way;
 	front = new;
 	while (way && way->parent)
 	{
@@ -30,8 +28,6 @@ static	t_way		*copy_way(t_way *way)
 		new = new->parent;
 		way = way->parent;
 	}
-	way = temp;
-	del_list(&temp->next);
 	return (front);
 }
 
@@ -39,18 +35,15 @@ t_way		*copy_list(t_way *meta)
 {
 	t_way	*new;
 	t_way	*front;
-	t_way	*temp;
 
 	new = new_list(-1, NULL);
 	front = new;
-	temp = meta->next;
 	new->len = meta->len;
-	while (meta->next && new)
+	while (meta->next)
 	{
 		new->next = copy_way(meta->next);
 		new = new->next;
 		meta = meta->next;
 	}
-	del_list_of_lists(&temp->next);
 	return (front);
 }

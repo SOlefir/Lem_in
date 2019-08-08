@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:47:11 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/08 00:28:25 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 16:54:59 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		g_error_nbr;
 int		fd;//
 
 int		g_efficiency;
+int		g_mod;
 
 /*
 **		STRUCTURES:
