@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:55:14 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/08 02:52:49 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 20:12:34 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		del_list_of_lists(t_way **list)
 	}
 }
 
-void	write_in_list(t_list **head, t_list *new)
+void		write_in_list(t_list **head, t_list *new)
 {
 	t_list	*temp;
 
@@ -75,10 +75,10 @@ void	write_in_list(t_list **head, t_list *new)
 	if (*head == NULL)
 		*head = new;
 	else
-    {
-	    while ((*head)->next != NULL)
-	        (*head) = (*head)->next;
-	    (*head)->next = new;
-	    *head = temp;
-    }
+	{
+		while ((*head)->next != NULL)
+			(*head) = (*head)->next;
+		(*head)->next = new;
+		*head = temp;
+	}
 }

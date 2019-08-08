@@ -6,36 +6,46 @@
 #    By: solefir <solefir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 21:25:16 by dquitzon          #+#    #+#              #
-#    Updated: 2019/08/08 13:41:00 by solefir          ###   ########.fr        #
+#    Updated: 2019/08/08 19:43:24 by solefir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-SRC = ./
-SOURCES = $(SRC)ft_bzero.c $(SRC)ft_memdel.c $(SRC)ft_strclr.c\
-    $(SRC)ft_strdel.c $(SRC)ft_striter.c $(SRC)ft_striteri.c\
-    $(SRC)ft_putchar.c $(SRC)ft_putchar_fd.c $(SRC)ft_putendl.c\
-    $(SRC)ft_putendl_fd.c $(SRC)ft_putnbr.c $(SRC)ft_putnbr_fd.c\
-    $(SRC)ft_putstr.c $(SRC)ft_putstr_fd.c $(SRC)ft_memalloc.c\
-    $(SRC)ft_memcpy.c $(SRC)ft_memccpy.c $(SRC)ft_memchr.c\
-    $(SRC)ft_memmove.c $(SRC)ft_memset.c $(SRC)ft_atoi.c\
-    $(SRC)ft_isalnum.c $(SRC)ft_isalpha.c $(SRC)ft_isascii.c\
-    $(SRC)ft_isdigit.c $(SRC)ft_isprint.c $(SRC)ft_memcmp.c\
-    $(SRC)ft_strcmp.c $(SRC)ft_strequ.c $(SRC)ft_strnequ.c\
-    $(SRC)ft_strncmp.c $(SRC)ft_tolower.c $(SRC)ft_toupper.c\
-    $(SRC)ft_itoa.c $(SRC)ft_strcat.c $(SRC)ft_strncat.c\
-    $(SRC)ft_strnew.c $(SRC)ft_strchr.c $(SRC)ft_strrchr.c\
-    $(SRC)ft_strcpy.c $(SRC)ft_strmap.c $(SRC)ft_strmapi.c\
-    $(SRC)ft_strncpy.c $(SRC)ft_strdup.c $(SRC)ft_strjoin.c\
-    $(SRC)ft_strstr.c $(SRC)ft_strnstr.c $(SRC)ft_strsub.c\
-    $(SRC)ft_strtrim.c $(SRC)ft_strsplit.c $(SRC)ft_strlcat.c\
-    $(SRC)ft_strlen.c $(SRC)ft_lstnew.c $(SRC)ft_lstmap.c\
-    $(SRC)ft_lstdelone.c $(SRC)ft_lstdel.c $(SRC)ft_lstadd.c\
-    $(SRC)ft_lstiter.c $(SRC)ft_masmemdel.c $(SRC)ft_lstdelcontent.c\
-	$(SRC)ft_iswhitespace.c $(SRC)get_next_line.c
+SOURCES = ./ft_bzero.c ./ft_memdel.c ./ft_strclr.c\
+    ./ft_strdel.c ./ft_striter.c ./ft_striteri.c\
+    ./ft_putchar.c ./ft_putchar_fd.c ./ft_putendl.c\
+    ./ft_putendl_fd.c ./ft_putnbr.c ./ft_putnbr_fd.c\
+    ./ft_putstr.c ./ft_putstr_fd.c ./ft_memalloc.c\
+    ./ft_memcpy.c ./ft_memccpy.c ./ft_memchr.c\
+    ./ft_memmove.c ./ft_memset.c ./ft_atoi.c\
+    ./ft_isalnum.c ./ft_isalpha.c ./ft_isascii.c\
+    ./ft_isdigit.c ./ft_isprint.c ./ft_memcmp.c\
+    ./ft_strcmp.c ./ft_strequ.c ./ft_strnequ.c\
+    ./ft_strncmp.c ./ft_tolower.c ./ft_toupper.c\
+    ./ft_itoa.c ./ft_strcat.c ./ft_strncat.c\
+    ./ft_strnew.c ./ft_strchr.c ./ft_strrchr.c\
+    ./ft_strcpy.c ./ft_strmap.c ./ft_strmapi.c\
+    ./ft_strncpy.c ./ft_strdup.c ./ft_strjoin.c\
+    ./ft_strstr.c ./ft_strnstr.c ./ft_strsub.c\
+    ./ft_strtrim.c ./ft_strsplit.c ./ft_strlcat.c\
+    ./ft_strlen.c ./ft_lstnew.c ./ft_lstmap.c\
+    ./ft_lstdelone.c ./ft_lstdel.c ./ft_lstadd.c\
+    ./ft_lstiter.c ./ft_masmemdel.c ./ft_lstdelcontent.c\
+	./ft_iswhitespace.c ./get_next_line.c\
+    \
+    ./ft_printf.c ./parse_arg.c\
+    ./print_buf.c ./flags.c\
+	./specifier.c ./type_c.c\
+    ./type_s.c\
+    ./type_di.c ./type_u.c\
+    ./type_x.c ./type_p.c\
+    ./type_o.c ./add_in_buf.c\
+	./width__precision.c ./len_nbr.c\
+    ./nbr.c\
+
 OBJ = $(SOURCES:%.c=%.o)
-FLAGS = -Wall -Wextra -Werror -fsanitize="address" -g -fno-omit-frame-pointer
-HEADER = .
+FLAGS = -Wall -Wextra -Werror #-fsanitize="address" -g -fno-omit-frame-pointer
+HEADER = ./libft.h
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:52:16 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/08 17:04:21 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 20:48:19 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,9 @@ static t_way		*create_lists_of_links(t_room ***graph)
 	list = new_list(g_count_room - 1, NULL);
 	step = list;
 	front = list;
-	while (step)
+	while (step && (i = -1))
 	{
 		link = (*graph)[step->id]->links;
-		i = -1;
 		while (++i < (*graph)[step->id]->count_links)
 		{
 			if (link[i] != -1 && !check_presence(list, link[i]) &&
@@ -71,14 +70,15 @@ static t_way		*create_way(t_way *step, t_room ***graph)
 	int		i;
 
 	way = new_list(step->id, NULL);
+	new_trash(way);
 	if (way->id && way->id != g_count_room - 1 && !(*graph)[way->id]->occup)
 		(*graph)[way->id]->occup = way;
 	front = way;
-	while (step->parent)
+	while (step->parent && (i = -1))
 	{
 		way->parent = new_list(step->parent->id, NULL);
+		new_trash(way->parent);
 		way->parent->next = way;
-		i = -1;
 		link = (*graph)[step->parent->id]->links;
 		while (++i < (*graph)[step->parent->id]->count_links)
 			if (link[i] == step->id)
@@ -107,27 +107,6 @@ static t_way		*new_way(t_room ***graph, t_way *list)
 	return ((way && !way->id) ? way : NULL);
 }
 
-int					calc_efficiency(t_way *meta)
-{
-	t_way	*path;
-	int		efc;
-	int		max;
-	int		sum;
-	int		mod;
-
-	path = meta;
-	max = 0;
-	sum = 0;
-	while ((path = path->next))
-		if ((sum += path->len))
-			(max < path->len) ? max = path->len : 0;
-	efc = (g_count_ants - max * meta->len + sum) / meta->len + max - 1
-	+ !!((g_count_ants - max * meta->len + sum) % meta->len);
-	mod = (g_count_ants - max * meta->len + sum) % meta->len;
-	(g_efficiency > efc) ? g_mod = mod : 0;
-	return (efc == (g_efficiency = (g_efficiency > efc) ? efc : g_efficiency));
-}
-
 t_way				*dijkstra(t_room ***graph)
 {
 	t_way	*meta;
@@ -147,14 +126,9 @@ t_way				*dijkstra(t_room ***graph)
 		path->len = len_way(path->parent);
 		if (!calc_efficiency(meta))
 			break ;
+		new_trash(save);
 		save = copy_list(meta);
-		//out_ways(*graph, save);
-		//printf("\n\nLOOP!\n\n\n");
 	}
-	out_ways(*graph, save);
-	printf("G_MOD:	%d\n\n\n", g_mod);
-	printf("META_LEN:	%d\n\n\n", save->len);
-	printf("EFFICIENCY:	%d\n\n", g_efficiency);
-	meta = save;
-	return (meta);
+	new_trash(meta);
+	return (save);
 }

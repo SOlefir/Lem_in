@@ -6,21 +6,22 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 21:31:07 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 23:09:04 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 19:55:38 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static int			find_room_index(char *links, t_room **all_rooms, char *room_a)
+static int	find_room_index(char *links, t_room **all_rooms, char *room_a)
 {
 	int		y;
 	int		i;
 	char	*link;
-	t_room 	*room;
+	t_room	*room;
 
 	y = -1;
-	link = (!ft_strncmp(links, room_a, ft_strlen(room_a))) ? ft_strchr(links, '-') + 1 : links;
+	link = (!ft_strncmp(links, room_a, ft_strlen(room_a))) ?
+	ft_strchr(links, '-') + 1 : links;
 	i = (!ft_strchr(link, '-')) ? ft_strlen(link) : ft_strchr(link, '-') - link;
 	while (++y < g_count_room)
 	{
@@ -31,19 +32,20 @@ static int			find_room_index(char *links, t_room **all_rooms, char *room_a)
 	return (0);
 }
 
-t_list				*find_link_in_input(t_list *input, char *str)
+t_list		*find_link_in_input(t_list *input, char *str)
 {
 	while (input != NULL)
 	{
 		if (!ft_strncmp((char*)input->content, str, ft_strlen(str)) ||
 			!ft_strcmp(ft_strchr((char*)input->content, '-') + 1, str))
-			return(input);	
+			return (input);
 		input = input->next;
 	}
 	return (input);
 }
 
-int					*find_links_room(char *name, t_list *input, t_room **graph, int count_links)
+int			*find_links_room(char *name, t_list *input, t_room **graph,
+															int count_links)
 {
 	int		*links;
 	t_list	*that_link;

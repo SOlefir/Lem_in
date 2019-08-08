@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solefir <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 21:06:38 by dquitzon          #+#    #+#             */
-/*   Updated: 2019/07/22 15:59:24 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 19:12:04 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+
+# include "ft_printf.h"
 
 # define BUFF_SIZE 50
 

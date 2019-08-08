@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 21:06:38 by dquitzon          #+#    #+#             */
-/*   Updated: 2019/07/15 13:17:44 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 19:42:40 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ struct				s_gnl
 	t_gnl			*next;
 };
 
+int					ft_printf(char *format, ...);
 int					get_next_line(const int fd, char **line);
 
 int					ft_atoi(const char *str);

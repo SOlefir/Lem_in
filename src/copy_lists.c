@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 22:29:34 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/08 13:55:17 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 19:53:50 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	t_way		*copy_way(t_way *way)
 	return (front);
 }
 
-t_way		*copy_list(t_way *meta)
+t_way				*copy_list(t_way *meta)
 {
 	t_way	*new;
 	t_way	*front;

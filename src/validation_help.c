@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:14:24 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 21:39:10 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 20:04:43 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ _Bool	is_room(char *str)
 	i = -1;
 	s = 0;
 	if (str[0] == '#')
-		return(0);
+		return (0);
 	while (str[++i] != '\0')
 		if (ft_iswhitespace(str[i]))
 			s++;
@@ -35,10 +35,10 @@ _Bool	is_link(char *str)
 	i = -1;
 	link = 0;
 	if (str[0] == '#')
-	    return (0);
+		return (0);
 	while (str[++i] != '\0')
 	{
-	    link += str[i] == '-' ? 1 : 0;
+		link += str[i] == '-' ? 1 : 0;
 		if (ft_iswhitespace(str[i]))
 			return (0);
 	}
@@ -86,7 +86,8 @@ _Bool	is_unknown(char *str)
 	word = 0;
 	while (str[++i] != '\0')
 	{
-		if ((!is_comand(str) && !is_comment(str) && !is_room(str) && !is_link(str)) ||
+		if ((!is_comand(str) && !is_comment(str) && !is_room(str) &&
+			!is_link(str)) ||
 			(!ft_isascii((int)str[i]) || !ft_isprint((int)str[i])))
 			return (1);
 		hash += str[i] == '#' ? 1 : 0;

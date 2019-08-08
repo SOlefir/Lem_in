@@ -6,7 +6,7 @@
 /*   By: solefir <solefir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 15:01:18 by solefir           #+#    #+#             */
-/*   Updated: 2019/08/07 23:15:45 by solefir          ###   ########.fr       */
+/*   Updated: 2019/08/08 20:23:16 by solefir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static _Bool	link_in_rooms(t_list *head)
 		head = head->next;
 	}
 	if (head != NULL && is_link((char*)head->next->content) &&
-	    is_room((char*)head->content))
+		is_room((char*)head->content))
 		return (1);
 	return (0);
 }
@@ -55,20 +55,5 @@ _Bool			last_validation(t_list *head)
 	if (link_in_rooms(head) || room_in_links(head))
 		if ((g_error_nbr = 7))
 			return (0);
-	/*while (head != NULL)
-	{
-		while (!is_link((char *)head->content))
-			head = head->next;	
-		while (temp != NULL)
-		{
-			if (is_link((char*)temp->content))
-				if (ft_strncmp((char*)temp->content, (char*)head->content, head->content_size) ||
-					ft_strcmp(ft_strchr((char*)temp->content, '-') + 1, (char*)head->content))
-					if ((g_error_nbr = 8))
-						return (0);
-			temp = temp->next;
-		}
-		head = head->next;
-	}*/
 	return (1);
 }
